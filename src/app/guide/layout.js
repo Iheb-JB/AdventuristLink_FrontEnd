@@ -17,7 +17,6 @@ const layout = ({ children }) => {
     <>
       <Header2 />
       {children}
-      <Newslatter />
       <Footer />
     </>
   );

@@ -213,7 +213,7 @@ const page = () => {
                                   "Austria",
                                   "Australia",
                                   "Bolivia",
-                                  "Hunhgary",
+                                  "Hungary",
                                 ]}
                                 placeholder="Country"
                               />
@@ -293,10 +293,6 @@ const page = () => {
                                 type="password"
                                 placeholder="*** ***"
                               />
-                              <i
-                                className="bi bi-eye-slash"
-                                id="togglePassword4"
-                              />
                             </div>
                           </div>
                           <div className="col-md-6">
@@ -307,10 +303,6 @@ const page = () => {
                                 type="password"
                                 placeholder="*** ***"
                               />
-                              <i
-                                className="bi bi-eye-slash"
-                                id="togglePassword5"
-                              />
                             </div>
                           </div>
                           <div className="col-md-6">
@@ -320,10 +312,6 @@ const page = () => {
                                 id="password6"
                                 type="password"
                                 placeholder="*** ***"
-                              />
-                              <i
-                                className="bi bi-eye-slash"
-                                id="togglePassword6"
                               />
                             </div>
                           </div>

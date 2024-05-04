@@ -35,13 +35,7 @@
             }
         ]
     },
-    {
-        "id": "4",
-        "label": "Destination",
-        "link": "/destination",
-        "icon": true,
-        "subMenu": []
-    },
+    
     {
         "id": "5",
         "label": "Pages",
@@ -114,8 +108,8 @@
             },
             {
                 "id": "11",
-                "label": "TestMessage",
-                "link": "/Messenger"
+                "label": "Admin",
+                "link": "/admin-dashboard"
             }
         ]
     },

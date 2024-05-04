@@ -61,52 +61,10 @@ const Page = () => {
                   <h6>Dashboard</h6>
                 </Link>
               </li>
-              <li className="item-has-children">
-                <a>
-                <Icon name="itinerary" width={18} height={18} viewBox="0 0 23 23"></Icon>
-                  <h6>Itinerary</h6>
-                </a>
-                <i className="bi bi-plus dropdown-icon" />
-                <ul className="sub-menu">
-                  <li>
-                    <Link href="/tour-upload">Add New</Link>
-                  </li>
-                  <li>
-                    <Link href="/all-tour">All users</Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="item-has-children">
-                <a>
-                <Icon name="activities" width={18} height={18} viewBox="0 0 23 23"></Icon>
-                  <h6>Activities</h6>
-                </a>
-                <i className="bi bi-plus dropdown-icon" />
-                <ul className="sub-menu">
-                  <li>
-                    <Link href="/activites-upload">Add New</Link>
-                  </li>
-                  <li>
-                    <Link href="/all-activities">All Activities</Link>
-                  </li>
-                </ul>
-              </li>
               <li>
-                <Link href="/booking-list">
-                <Icon name="itinerariesBook" width={18} height={18} viewBox="0 0 20 20"></Icon>
-                  <h6>Completed Itin</h6>
-                </Link>
-              </li>
-              <li>
-                <a href="customer-list.html">
+                <a href="/guide">
                 <Icon name="userList" width={18} height={18} viewBox="0 0 30 30"></Icon>
                   <h6>Users List</h6>
-                </a>
-              </li>
-              <li>
-                <a href="dashboard-profile.html">
-                <Icon name="settings" width={18} height={18} viewBox="0 0 30 30"></Icon>
-                  <h6>Settings</h6>
                 </a>
               </li>
               <li>
@@ -121,17 +79,6 @@ const Page = () => {
         <div className="main-content">
           <div className="row">
             <div className="col-xl-12">
-              <div className="main-content-title-profile mb-50">
-                <div className="main-content-title">
-                  <h3>Hi, Adventurer! </h3>
-                </div>
-                <div className="profile">
-                  <a href="#">
-                    View Profile
-                   <Icon name="littleProfile" width={8} height={8} viewBox="0 0 8 8"></Icon>
-                  </a>
-                </div>
-              </div>
               <div className="counter-area">
                 <div className="row g-3">
                   <div className="col">
@@ -165,13 +112,13 @@ const Page = () => {
                 </div>
               </div>
               <div className="recent-listing-area">
-                <h6>Recent </h6>
+                <h6>Recent Requests for Approval</h6>
                 <div className="recent-listing-table">
                   <table className="eg-table2">
                     <thead>
                       <tr>
-                        <th>Title</th>
-                        <th>Category</th>
+                        <th>From</th>
+                        <th>Type</th>
                         <th>Status</th>
                         <th>Timeline</th>
                       </tr>
@@ -189,19 +136,18 @@ const Page = () => {
                             <div className="product-content">
                               <h6>
                                 <a href="#">
-                                  Explore Travel NYC's Museums, Diversity,
+                                  Iheb Jabeur
                                 </a>
                               </h6>
-                              <p><span>Nepal + Indea</span></p>
                             </div>
                           </div>
                         </td>
-                        <td data-label="Category">Tour</td>
+                        <td data-label="Category">new registration</td>
                         <td data-label="Status">
                           <span className="confirmed">Confirmed</span>
                         </td>
                         <td data-label="Timeline">
-                          July 10, 2023 - July 14, 2023
+                           July 14, 2023
                         </td>
                       </tr>
                       <tr>
@@ -214,14 +160,19 @@ const Page = () => {
                               />
                             </div>
                             <div className="product-content">
-                              <p><span>New York</span></p>
+                             <h6>
+                                <a href="#">
+                                  Jhon Doe
+                                </a>
+                              </h6>
                             </div>
                           </div>
                         </td>
+                        <td data-label="Category">new registration</td>
                         <td data-label="Status">
                           <span className="pending">Pending</span>
                         </td>
-                        <td data-label="Timeline">60 Days</td>
+                        <td data-label="Timeline">May 10, 2024</td>
                       </tr>
                       <tr>
                         <td data-label="Name">
@@ -235,20 +186,17 @@ const Page = () => {
                             <div className="product-content">
                               <h6>
                                 <a href="#">
-                                  Travel To Mt Everest From Pokhara.
+                                  Bou Kalthoum.
                                 </a>
                               </h6>
-                              <p>
-                                <span>Trekking</span>
-                              </p>
                             </div>
                           </div>
                         </td>
-                        <td data-label="Category">Itinerary</td>
+                        <td data-label="Category">new registration</td>
                         <td data-label="Status">
-                          <span className="confirmed">Confirmed</span>
+                          <span className="rejected">Rejected</span>
                         </td>
-                        <td data-label="Timeline">July 10, 2023</td>
+                        <td data-label="Timeline">May 08, 2024</td>
                       </tr>
                     </tbody>
                   </table>
@@ -289,7 +237,6 @@ const Page = () => {
           </ul>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
