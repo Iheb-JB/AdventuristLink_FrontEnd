@@ -7,7 +7,6 @@ import Home2Destinationslide from "@/components/destinationSlider/Home2Destinati
 import Footer from "@/components/footer/Footer";
 import Header2 from "@/components/header/Header2";
 import Home2Team from "@/components/team/Home2Team";
-import Home2Testimonial from "@/components/testimonial/Home2Testimonial";
 import Home2ThrillingTour from "@/components/tourPackage/Home2ThrillingTour";
 import Home2WhyChoose from "@/components/whyChoose/Home2WhyChoose";
 import React from "react";
@@ -31,7 +30,6 @@ const page = () => {
       <Home2About />
       <Home2Activities />
       <Home2WhyChoose />
-      <Home2Testimonial />
       <Home2Team />
       <Home2Blog />
       <Home2Banner2 />

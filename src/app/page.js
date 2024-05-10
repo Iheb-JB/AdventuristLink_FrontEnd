@@ -7,6 +7,7 @@ import Home2Testimonial from "@/components/testimonial/Home2Testimonial";
 import Home2ThrillingTour from "@/components/tourPackage/Home2ThrillingTour";
 import Home2WhyChoose from "@/components/whyChoose/Home2WhyChoose";
 import { AuthProvider } from "@/hooks/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Home2Testimonial />
       <Newslatter />
       <Footer />
+      <Toaster/>
     </>
   );
 }

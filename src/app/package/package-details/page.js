@@ -259,7 +259,7 @@ const Page = () => {
                       <span>2590 Reviews</span>
                     </div>
                   </div>
-                  {/* modal for review */}
+                  {/* model for review */}
                   <div
                     className="modal fade"
                     id="exampleModalToggle"
