@@ -1,11 +1,20 @@
 import { AuthContext } from "@/hooks/AuthContext";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import useLogin from '@/hooks/useLogin';
 
 const LoginModal = () => {
   const { toggleSignUpModal, toggleLoginModal } = useContext(AuthContext);
   const register_modal_show = () => {
     toggleSignUpModal();
     toggleLoginModal();
+  }
+  const [email, setEmail] = useState("");
+  const [password , setPasswrord]= useState("");
+  const {loading,login} = useLogin();
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    await login(email,password);
   }
   return (
     <>
@@ -32,7 +41,7 @@ const LoginModal = () => {
                 <div className="form-title">
                   <h2>Sign in to continue</h2>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form-inner mb-20">
                     <label className="label p-2">
                       <span className="text-base label-text">
@@ -42,6 +51,8 @@ const LoginModal = () => {
                     <input
                       type="text"
                       placeholder="Enter your registered Email *"
+                      value={email}
+                      onChange={(e)=> setEmail(e.target.value)}
                     />
                   </div>
                   <div className="form-inner mb-20">
@@ -51,10 +62,12 @@ const LoginModal = () => {
                     <input
                       type="password"
                       placeholder="Enter your password *"
+                      value={password}
+                      onChange={(e)=> setPasswrord(e.target.value)}
                     />
                   </div>
                   <div>
-                    <button type="button" className="login-btn mb-25">
+                    <button type="submit" className="login-btn mb-25">
                       Login
                     </button>
                   </div>

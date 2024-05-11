@@ -1,25 +1,18 @@
 "use client";
 import Header2 from "@/components/header/Header2";
+import UserProfile from "@/hooks/useProfile";
 import Icon from "@/uitils/Icon";
 import SelectComponent from "@/uitils/SelectComponent";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 const page = () => {
   const [image, setImage] = useState(null);
   const [activeTab, setActiveTab] = useState("profile");
   const fileInputRef = useRef(null);
+  const {profile, setProfile, updateProfile , handleChange , handleSelectChange} = UserProfile();
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
@@ -28,6 +21,8 @@ const page = () => {
   const handleButtonClick = () => {
     fileInputRef.current.click(); // Trigger file input click
   };
+  
+  
 
   useEffect(() => {
     const profileTab = document.getElementById("profile-tab");
@@ -41,6 +36,22 @@ const page = () => {
       changePassTab.classList.add("active");
     }
   }, [activeTab]);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader(); 
+      reader.onload = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    updateProfile();
+  }
 
   return (
     <>
@@ -162,24 +173,18 @@ const page = () => {
                       <div className="profile-tab-content-title">
                         <h6>You Details</h6>
                       </div>
-                      <form>
+                      <form onSubmit={handleSubmit}>
                         <div className="row">
                           <div className="col-md-6">
                             <div className="form-inner mb-30">
-                              <label>User name*</label>
-                              <input type="text" placeholder="Ex- Rocky " />
+                              <label>User name</label>
+                              <input type="text" name="username" value={profile.username || ''} onChange={handleChange} placeholder="username"/>
                             </div>
                           </div>
                           <div className="col-md-6">
                             <div className="form-inner mb-30">
                               <label>Bio*</label>
-                              <input type="text" placeholder="Jhon" />
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className="form-inner mb-30">
-                              <label>Phone Number*</label>
-                              <input type="text" placeholder="01245302....." />
+                              <input type="text" name="bio" value={profile.bio || ''} onChange={handleChange} placeholder="Your bio" />
                             </div>
                           </div>
                           <div className="col-md-6">
@@ -189,8 +194,10 @@ const page = () => {
                                 <div className="form-group">
                                   <input
                                     type="date"
-                                    name="inOut"
-                                    placeholder="5 Jan, 2024"
+                                    name="dateOfBirth"
+                                    value={profile.dateOfBirth || ''}
+                                    onChange={handleChange}
+                                    placeholder="yyyy-mm-dd"
                                   />
                                 </div>
                               </div>
@@ -202,20 +209,26 @@ const page = () => {
                               <SelectComponent
                                 options={["Male", "Female"]}
                                 placeholder="Gender"
+                                value={profile.gender}
+                                onChange={(value) => setProfile({...profile, gender: value})}
                               />
                             </div>
                           </div>
                           <div className="col-md-6">
                             <div className="form-inner">
-                              <label>Country*</label>
+                              <label>Travel preferences*</label>
                               <SelectComponent
                                 options={[
-                                  "Austria",
-                                  "Australia",
-                                  "Bolivia",
-                                  "Hungary",
+                                  "Cultural and city Exploration",
+                                  "Food and Culinary Experience",
+                                  "Adventure and Outdoor Activities",
+                                  "Relaxation and Wellness", 
+                                  "Party , Festivals and Events",
+                                  "Other"
                                 ]}
-                                placeholder="Country"
+                                value={profile.travelerPreferences}
+                                onChange={(value) => setProfile({...profile, travelerPreferences: value})}
+                                placeholder="Your preferences"
                               />
                             </div>
                           </div>
@@ -234,6 +247,7 @@ const page = () => {
                                 type="file"
                                 hidden
                                 onChange={handleImageUpload}
+                                //value={profile.profilePicture}
                                 ref={fileInputRef} // Reference to file input
                                 accept="image/*"
                               />
@@ -260,14 +274,13 @@ const page = () => {
                             <input type="checkbox" />
                             <span className="checkmark" />
                             <span className="text">
-                              Update details in all properties included in this
-                              site.
+                              Update details in all properties included in this form
                             </span>
                           </label>
                         </div>
                         <div className="form-inner">
                           <button type="submit" className="primary-btn3">
-                            Update Profile
+                            Save Profile
                           </button>
                         </div>
                       </form>
@@ -343,6 +356,7 @@ const page = () => {
           </ul>
         </div>
       </div>
+      <Toaster/>
     </>
   );
 };

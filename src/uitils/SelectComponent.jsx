@@ -1,7 +1,7 @@
 "use client"
 import useCustomSelect from "@/hooks/useCustomSelect";
 import React, { useEffect, useRef } from "react";
-const SelectComponent = ({ options, placeholder, open, customClass }) => {
+const SelectComponent = ({ options, placeholder,value, onChange, customClass }) => {
   const {
     isOpen,
     selectedOption,
@@ -9,7 +9,7 @@ const SelectComponent = ({ options, placeholder, open, customClass }) => {
     closeDropdown,
     toggleDropdown,
     selectOption,
-  } = useCustomSelect(options, open);
+  } = useCustomSelect(options);
 
   const dropdownRef = useRef(null);
 
@@ -32,6 +32,16 @@ const SelectComponent = ({ options, placeholder, open, customClass }) => {
     };
   }, [isOpen]);
 
+  useEffect(()=>{
+    selectOption(value);
+  },[value]);
+
+  const handleSelect = (option)=>{
+    selectOption(option);
+    onChange(option);
+    closeDropdown();
+  }
+
   const dropdownClassName = `nice-select ${customClass || ""} ${
     isOpen ? "open" : ""
   }`;
@@ -53,8 +63,7 @@ const SelectComponent = ({ options, placeholder, open, customClass }) => {
             }`}
             data-value={index}
             onClick={() => {
-              selectOption(option);
-              openDropdown(); // Open the next dropdown
+              handleSelect(option);
             }}
           >
             {option}

@@ -7,6 +7,8 @@ import Link from "next/link";
 import React, { useContext, useState } from "react";
 import ActivityModal from "@/components/common/ActivityModal";
 import { AuthContext } from "@/hooks/AuthContext";
+import { Toast } from "bootstrap";
+import { Toaster } from "react-hot-toast";
 const page = () => {
   const { showActivityModal, toggleActivityModal } = useContext(AuthContext);
   const [ activityModalData, setActivityModalData] = useState({});
@@ -234,6 +236,7 @@ const page = () => {
             </li>
           </ul>
         </div>
+        <Toaster/>
       </div>
     </>
   );
