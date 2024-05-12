@@ -1,5 +1,6 @@
 "use client";
 import Header2 from "@/components/header/Header2";
+import useLogout from "@/hooks/useLogout";
 import UserProfile from "@/hooks/useProfile";
 import Icon from "@/uitils/Icon";
 import SelectComponent from "@/uitils/SelectComponent";
@@ -13,6 +14,7 @@ const page = () => {
   const fileInputRef = useRef(null);
   const {profile, setProfile, updateProfile , handleChange , handleSelectChange} = UserProfile();
 
+  const{logout} = useLogout();
 
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
@@ -21,9 +23,6 @@ const page = () => {
   const handleButtonClick = () => {
     fileInputRef.current.click(); // Trigger file input click
   };
-  
-  
-
   useEffect(() => {
     const profileTab = document.getElementById("profile-tab");
     const changePassTab = document.getElementById("change-pass-tab");
@@ -36,6 +35,20 @@ const page = () => {
       changePassTab.classList.add("active");
     }
   }, [activeTab]);
+
+  useEffect(()=>{
+     const query = new URLSearchParams(window.location.search);
+     const tab = query.get('tab');
+     if(tab){
+      setActiveTab(tab);
+     }
+     const user = query.get('userId');
+     const token = query.get('token');
+     if (user && token) {
+      localStorage.setItem('resetUserId', user);
+      localStorage.setItem('resetToken', token);
+    }
+  },[]);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -94,7 +107,10 @@ const page = () => {
                 </Link>
               </li>
               <li>
-                <a href="#">
+                <a href="/" onClick={(e) => {
+                       e.preventDefault();
+                      logout();
+                 }}>
                   <Icon
                     name="logout"
                     width={18}
@@ -304,7 +320,10 @@ const page = () => {
                               <input
                                 id="password4"
                                 type="password"
+                               // value={passwords.oldPassword}
+                               // onChange={handleChangeP}
                                 placeholder="*** ***"
+                                required
                               />
                             </div>
                           </div>
@@ -314,7 +333,10 @@ const page = () => {
                               <input
                                 id="password5"
                                 type="password"
+                               // value={passwords.newPassword}
+                                //onChange={handleChangeP}
                                 placeholder="*** ***"
+                                required
                               />
                             </div>
                           </div>
@@ -324,7 +346,10 @@ const page = () => {
                               <input
                                 id="password6"
                                 type="password"
+                                //value={passwords.confirmPassword}
+                                //onChange={handleChangeP}
                                 placeholder="*** ***"
+                                required
                               />
                             </div>
                           </div>
@@ -334,7 +359,7 @@ const page = () => {
                         <button type="submit" className="primary-btn3">
                           Save Change
                         </button>
-                        <button type="submit" className="primary-btn3 cancel">
+                        <button type="button" className="primary-btn3 cancel">
                           Cancel
                         </button>
                       </div>

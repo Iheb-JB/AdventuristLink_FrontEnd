@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext({});
 
@@ -8,6 +8,8 @@ const AuthProvider = ({ children }) => {
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showActivityModal, setShowActivityModal] = useState(false);
+  const [showPasswordResetModal, setShowPasswordResetModal]= useState(false);
+  const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('adventur-user')) || null);
 
   const toggleLoginModal = () => {
     setShowLoginModal(!showLoginModal);
@@ -25,6 +27,12 @@ const AuthProvider = ({ children }) => {
     setShowActivityModal(!showActivityModal);
   };
 
+  const togglePasswordResetModal = ()=>{
+    console.log("Toggling Password Reset Modal: ", !showPasswordResetModal);
+     setShowPasswordResetModal(!showPasswordResetModal);
+  };
+ 
+
   return (
     <AuthContext.Provider
       value={{
@@ -32,10 +40,14 @@ const AuthProvider = ({ children }) => {
         showSignUpModal,
         showNotificationModal,
         showActivityModal,
+        authUser,
+        showPasswordResetModal,
         toggleLoginModal,
         toggleSignUpModal,
         toggleNotificationModal,
         toggleActivityModal,
+        setAuthUser,
+        togglePasswordResetModal,
       }}
     >
       {children}

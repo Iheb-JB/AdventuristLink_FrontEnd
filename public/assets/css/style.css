@@ -28999,10 +28999,13 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 .modal.login-modal,
 .modal.signup-modal,
 .modal.notification-modal,
-.modal.activity-modal
+.modal.activity-modal,
+.modal.passwordReset-modal
 {
   display: block !important;
+  visibility: visible !important;
   opacity: 1 !important;
+  
 }
 
 .signup-modal .modal-header {
