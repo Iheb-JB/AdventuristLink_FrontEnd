@@ -1,6 +1,7 @@
 import { AuthContext } from "@/hooks/AuthContext";
 import React, { useContext, useState } from "react";
 import useLogin from '@/hooks/useLogin';
+import PasswordResetModal from "./PasswordResetModal";
 
 const LoginModal = () => {
   const { toggleSignUpModal, toggleLoginModal , togglePasswordResetModal } = useContext(AuthContext);
@@ -9,8 +10,8 @@ const LoginModal = () => {
     toggleLoginModal();
   }
   const reset_Password_modal_show = ()=>{
-    toggleLoginModal();
     togglePasswordResetModal();
+    toggleLoginModal();
   }
   const [email, setEmail] = useState("");
   const [password , setPasswrord]= useState("");
@@ -78,13 +79,10 @@ const LoginModal = () => {
                   <a className="login-link" onClick={register_modal_show}>
                     {"Don't"} have an account?
                   </a>
+                  <a className="password-reset-link" onClick={reset_Password_modal_show}>
+                  Forgot your password ?
+                  </a>
                 </form>
-                <button
-                      className="password-reset"
-                      data-bs-toggle="modal"
-                      data-bs-target="#password-reset"
-                      onClick={togglePasswordResetModal}
-                  >Forgot your password ?</button>
               </div>
             </div>
           </div>

@@ -21,6 +21,7 @@ import { AuthContext } from "@/hooks/AuthContext";
 import LoginModal from "../common/LoginModal";
 import SignUpModal from "../common/SignupModel";
 import NotificationModal from "../common/NotificationModal";
+import PasswordResetModal from "../common/PasswordResetModal";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
 const initialState = {
@@ -79,6 +80,7 @@ const Header2 = () => {
     showLoginModal,
     showSignUpModal,
     showNotificationModal,
+    showPasswordResetModal,
     toggleLoginModal,
     toggleSignUpModal,
     toggleNotificationModal,
@@ -307,6 +309,7 @@ const Header2 = () => {
       </header>
       {showLoginModal && <LoginModal />}
       {showSignUpModal && <SignUpModal />}
+      {showPasswordResetModal && <PasswordResetModal />}
       {showNotificationModal && <NotificationModal />}
       <div
         className={`right-sidebar-menu ${
