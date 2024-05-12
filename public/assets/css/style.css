@@ -1702,7 +1702,9 @@ ul {
   padding: 10px 0;
   width: 100%;
 }
-.login-link {
+.login-link,
+.password-reset-link
+{
   font-size: 0.75rem; /* Sets a smaller font size */
   color: #007bff; /* Example: Bootstrap primary blue, change as needed */
   margin-bottom: 5px; /* Adds some space below each link */
@@ -1710,7 +1712,9 @@ ul {
   margin: 0 39px;
   cursor: pointer;
 }
-.login-link:hover {
+.login-link:hover,
+.password-reset-link:hover
+{
   text-decoration: underline; /* Underline on hover for better user interaction */
 }
 .section-title4 p {
@@ -29005,7 +29009,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  
+
 }
 
 .signup-modal .modal-header {

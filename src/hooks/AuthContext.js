@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showActivityModal, setShowActivityModal] = useState(false);
   const [showPasswordResetModal, setShowPasswordResetModal]= useState(false);
-  const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('adventur-user')) || null);
+  // const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('adventur-user')) || null);
 
   const toggleLoginModal = () => {
     setShowLoginModal(!showLoginModal);
@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
     console.log("Toggling Password Reset Modal: ", !showPasswordResetModal);
      setShowPasswordResetModal(!showPasswordResetModal);
   };
- 
+
 
   return (
     <AuthContext.Provider
@@ -40,13 +40,13 @@ const AuthProvider = ({ children }) => {
         showSignUpModal,
         showNotificationModal,
         showActivityModal,
-        authUser,
+        // authUser,
         showPasswordResetModal,
         toggleLoginModal,
         toggleSignUpModal,
         toggleNotificationModal,
         toggleActivityModal,
-        setAuthUser,
+        // setAuthUser,
         togglePasswordResetModal,
       }}
     >
