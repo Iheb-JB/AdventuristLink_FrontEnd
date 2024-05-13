@@ -236,7 +236,6 @@ const page = () => {
             </li>
           </ul>
         </div>
-        <Toaster/>
       </div>
     </>
   );

@@ -1,22 +1,39 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Message from './Message'
 import MessageInput from './MessageInput'
 import {TiMessages} from 'react-icons/ti'
+import useConversation from '@/zustand/useConversation'
+import useGetMessages from '@/hooks/useGetMessages'
+import MessageSkeleton from '../skeletons/MessageSkeleton'
 
 const MessageContainer = () => {
-  const noChatSelected = true
+  const {selectedConversation , setSelectedConversation} = useConversation();
+  const {loading,messages}= useGetMessages();
+  console.log("messages:", messages);
+
+  useEffect(()=>{ // cleanup function when page is not in the browser
+    return()=> setSelectedConversation(null);
+  },[setSelectedConversation]);
   return (
     <div className='flex flex-col w-full'>
-        {noChatSelected ? (
+        {! selectedConversation ? (
           <NoChatSelected/>
         ):(
           <>
           <div className='bg-slate-500 px-4 py-2 mb-2'>
              <span className='label text'>To:</span>{" "}
-             <span className='text-gray-900 font-bold'>Iheb Jab</span>
+             <span className='text-gray-900 font-bold'>
+             {`${selectedConversation.firstName} ${selectedConversation.lastName}`}
+             </span>
           </div>
           <div className='px-4 flex-1 overflow-auto'>
-            <Message/>
+            {!loading && messages.length > 0 && messages.map((message)=><Message key={message._id} message={message}/>)}
+            {loading && [...Array(3)].map((idx)=> <MessageSkeleton key={idx}/>)}
+            {!loading && messages.length === 0 &&(
+              <p className='text-center'>Send a message to start the conversation</p>
+            )}
+           
           </div>
           <MessageInput/>
         </>
