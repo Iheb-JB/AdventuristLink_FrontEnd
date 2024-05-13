@@ -15,6 +15,7 @@ import "../../public/assets/css/style.css";
 import "../../public/assets/css/dashboard.css";
 import { useEffect } from "react";
 import { AuthProvider } from "@/hooks/AuthContext";
+import { SocketContextProvider } from "@/hooks/SocketContext";
 import dynamic from 'next/dynamic'
 
 
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body>
           <AuthProvider>
+            
             {children}
+            
           </AuthProvider>
         </body>
       </html>

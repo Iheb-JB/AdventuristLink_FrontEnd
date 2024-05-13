@@ -1,3 +1,4 @@
+import { useSocketContext } from '@/hooks/SocketContext';
 import Icon from '@/uitils/Icon';
 import useConversation from '@/zustand/useConversation';
 import React from 'react'
@@ -5,6 +6,7 @@ import React from 'react'
 const Conversation = ({conversation, lastIdx}) => {
    const {selectedConversation,setSelectedConversation} = useConversation();
    const isSelected = selectedConversation?._id === conversation._id ;
+   //const {onlineUsers} = useSocketContext
   return (
     <>
       <div className={`flex gap-2 items-center hover:bg-green-400 rounded p-2 py-1 cursor-pointer
