@@ -17,6 +17,13 @@ const page = () => {
     setActivityModalData(data);
     // You can perform any other actions you need with the saved data here
   };
+  const [formData, setFormData] = useState({
+    title: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    groupSize: 1,
+  });
   return (
     <>
       <Header2 />
@@ -83,7 +90,7 @@ const page = () => {
                     <img src="/assets/img/innerpage/profile-img.png" alt="" />
                   </div>
                   <div className="author-content">
-                    <span>Hello, I’m</span>
+                    <span>Hello, </span>
                     <h4>username</h4>
                   </div>
                 </div>
@@ -143,6 +150,10 @@ const page = () => {
                           <input
                             type="text"
                             placeholder="Enter the itinerary title"
+                            value={formData.title}
+                            onChange={(e)=>
+                              setFormData({ ...formData, title: e.target.value })
+                            }
                           />
                         </div>
                         <div className="form-inner mb-20">
@@ -156,6 +167,10 @@ const page = () => {
                                 type="date"
                                 name="inOut"
                                 placeholder="5 Jan, 2024"
+                                value={formData.startDate}
+                                onChange={(e)=>
+                                  setFormData({...formData, startDate: e.target.value})
+                                }
                               />
                             </div>
                           </div>
@@ -168,6 +183,10 @@ const page = () => {
                                 type="date"
                                 name="inOut"
                                 placeholder="5 Jan, 2024"
+                                value={formData.endDate}
+                                onChange={(e)=>
+                                  setFormData({...formData, endDate: e.target.value})
+                                }
                               />
                             </div>
                           </div>
@@ -194,6 +213,10 @@ const page = () => {
                             Group Size:<span></span>
                           </label>
                           <QuantityCounter
+                            value={formData.groupSize}
+                            onChange={(value) =>
+                              setFormData({ ...formData, groupSize: value })
+                            }
                             incIcon="bx bx-plus"
                             dcrIcon="bx bx-minus"
                           />
@@ -205,6 +228,10 @@ const page = () => {
                           <textarea
                             placeholder="Write the itinerary description"
                             defaultValue={""}
+                            value={formData.description}
+                            onChange={(e)=>
+                              setFormData({...formData, description: e.target.value})
+                            }
                           />
                         </div>
                         <div className="form-inner">
@@ -237,6 +264,7 @@ const page = () => {
           </ul>
         </div>
       </div>
+      <Toaster/>
     </>
   );
 };

@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import SearchForm from "@/components/GoogleSearchForm/searchForm";
 import QuantityCounter from "@/uitils/QuantityCounter";
+import SelectComponent from "@/uitils/SelectComponent";
+import useActivity from "@/hooks/useActivity";
+import { Toaster } from "react-hot-toast";
 
 const ActivityModal = ({ onSave, onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
     location: "",
-    startDate: "",
-    endDate: "",
+    activityDate: "",
     groupSize: 1, // Default group size
     description: "",
+    type: "",
   });
+  const {createActivity} = useActivity();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    onSave(formData);
+    //console.log("Submitting Form Data:", formData);
+    await createActivity(formData);
     onClose(); // Close modal after saving data
   };
+  const handleLocationSelect = (location) => {
+    console.log("Location received in ActivityModal:", location);
+    setFormData({...formData, location});
+};
 
   const handleClose = () => {
     onClose(); // Call onClose function to handle modal closing
@@ -37,7 +46,7 @@ const ActivityModal = ({ onSave, onClose }) => {
               <span className="modal-close-box" onClick={handleClose}>&times;</span>
             </div>
             <div className="modal-body">
-              <h4>Reserve Your Activity</h4>
+              <h4>Tailor Your Activity</h4>
               <p>
                 Create your wanted Activity so other travelers can share it with
                 you!
@@ -58,20 +67,20 @@ const ActivityModal = ({ onSave, onClose }) => {
                   />
                 </div>
                 <div className="form-inner mb-20">
-                  <SearchForm label={"Location"} />
+                  <SearchForm label={"Location"} value={formData.location} onSelectLocation={handleLocationSelect} />
                 </div>
                 <div className="tour-date-wrap mb-50">
-                  <h6>Select Your start date:</h6>
+                  <h6>Select Your activity date:</h6>
                   <div className="form-inner mb-20">
                     <div className="form-group">
                       <input
                         type="date"
                         name="startDate"
-                        value={formData.startDate}
+                        value={formData.activityDate}
                         onChange={(e) =>
                           setFormData({
                             ...formData,
-                            startDate: e.target.value,
+                            activityDate: e.target.value,
                           })
                         }
                         required
@@ -79,21 +88,21 @@ const ActivityModal = ({ onSave, onClose }) => {
                     </div>
                   </div>
                 </div>
-                <div className="tour-date-wrap mb-50">
-                  <h6>Select Your end date:</h6>
-                  <div className="form-inner mb-20">
-                    <div className="form-group">
-                      <input
-                        type="date"
-                        name="endDate"
-                        value={formData.endDate}
-                        onChange={(e) =>
-                          setFormData({ ...formData, endDate: e.target.value })
-                        }
-                        required
+                <div className="form-inner mb-20">
+                  <label>Travel preferences*</label>
+                    <SelectComponent
+                      options={[
+                        "Cultural and city Exploration",
+                        "Food and Culinary Experience",
+                        "Adventure and Outdoor Activities",
+                        "Relaxation and Wellness", 
+                        "Party , Festivals and Events",
+                        "Other"
+                       ]}
+                      value={formData.type}
+                      onChange={(value) => setFormData({...formData, type: value})}
+                      placeholder="Activity type"
                       />
-                    </div>
-                  </div>
                 </div>
                 <div className="number-input-item adults">
                   <label className="number-input-lable">
@@ -131,6 +140,7 @@ const ActivityModal = ({ onSave, onClose }) => {
           </div>
         </div>
       </div>
+      <Toaster/>
     </>
   );
 };

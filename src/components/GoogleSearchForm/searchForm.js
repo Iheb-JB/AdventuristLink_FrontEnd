@@ -7,7 +7,7 @@ const scriptOptions = {
   libraries: ["places"],
 };
 
-export default function MultiSelectAutocomplete({ label }) {
+export default function MultiSelectAutocomplete({ label , onSelectLocation}) {
   const { isLoaded, loadError } = useLoadScript(scriptOptions);
   const [autocomplete, setAutocomplete] = useState(null);
   const [selectedPlaces, setSelectedPlaces] = useState([]);
@@ -26,14 +26,18 @@ export default function MultiSelectAutocomplete({ label }) {
       if (place && place.geometry && place.geometry.location) {
         const selectedPlace = {
           name: place.name,
-          location: {
+          
+           location : {
             type: "Point",
             coordinates: [place.geometry.location.lng(), place.geometry.location.lat()],
           },
           placeId: place.place_id,
           address: place.formatted_address,
         };
+        
         setSelectedPlaces([...selectedPlaces, selectedPlace]);
+        //console.log("Sending Location from SearchForm to ActivityModal:", location);
+        onSelectLocation(selectedPlace.location);
         inputEl.current.value = ""; // Clear input after selection
       }
     }
