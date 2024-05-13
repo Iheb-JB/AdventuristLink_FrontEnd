@@ -8,7 +8,7 @@ const useSendMessage = ()=>{
 
     const sendMessage= async(messageText)=>{
         try {
-            if(!messageText){return;}
+            if(!messageText.trim()){return;}
             const response = await api.post(`/messages/send/${selectedConversation._id}`,{
                 message: messageText // 
               });

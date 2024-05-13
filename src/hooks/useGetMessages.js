@@ -9,7 +9,9 @@ const useGetMessages = ()=>{
     const {messages, setMessages, selectedConversation}= useConversation();
     const [loading , setLoading] = useState(false);
     useEffect(()=>{
+        setMessages([]);
         const getMessages= async()=>{
+            if (!selectedConversation?._id) return;
             setLoading(true);
             try {
                 
@@ -22,7 +24,7 @@ const useGetMessages = ()=>{
                 setLoading(false);
             }
         };
-        if(selectedConversation?._id) {getMessages();}
+        getMessages();
     },[selectedConversation?._id, setMessages]);
    
 

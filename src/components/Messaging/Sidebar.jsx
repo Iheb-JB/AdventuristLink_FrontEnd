@@ -1,6 +1,8 @@
+'use client'
 import React from "react";
 import Conversations from "./Conversations";
 import SearchInput from "./SearchInput";
+import { Toaster } from "react-hot-toast";
 
 
 const Sidebar = ()=>{
@@ -9,6 +11,7 @@ const Sidebar = ()=>{
             <SearchInput/>
             <div className="divider px-3"/>
             <Conversations/>
+            <Toaster/>
         </div>
     )
 }

@@ -15,7 +15,6 @@ const page = () => {
   return (
     <>
       <Messenger/>
-      <Footer />
     </>
   );
 };
