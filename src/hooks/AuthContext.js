@@ -48,13 +48,13 @@ const AuthProvider = ({ children }) => {
         showSignUpModal,
         showNotificationModal,
         showActivityModal,
-        authUser,
+        // authUser,
         showPasswordResetModal,
         toggleLoginModal,
         toggleSignUpModal,
         toggleNotificationModal,
         toggleActivityModal,
-        setAuthUser,
+        // setAuthUser,
         togglePasswordResetModal,
       }}
     >

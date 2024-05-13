@@ -310,6 +310,7 @@ const Header2 = () => {
       </header>
       {showLoginModal && <LoginModal />}
       {showSignUpModal && <SignUpModal />}
+      {showPasswordResetModal && <PasswordResetModal />}
       {showNotificationModal && <NotificationModal />}
       {showPasswordResetModal && <PasswordResetModal/>}
       <div
