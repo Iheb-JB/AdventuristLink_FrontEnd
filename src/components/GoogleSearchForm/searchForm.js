@@ -7,7 +7,7 @@ const scriptOptions = {
   libraries: ["places"],
 };
 
-export default function MultiSelectAutocomplete({ label , onSelectLocation}) {
+export default function MultiSelectAutocomplete({ label , onSelectLocation, onSelectCompleteLocation}) {
   const { isLoaded, loadError } = useLoadScript(scriptOptions);
   const [autocomplete, setAutocomplete] = useState(null);
   const [selectedPlaces, setSelectedPlaces] = useState([]);
@@ -37,7 +37,11 @@ export default function MultiSelectAutocomplete({ label , onSelectLocation}) {
         
         setSelectedPlaces([...selectedPlaces, selectedPlace]);
         //console.log("Sending Location from SearchForm to ActivityModal:", location);
-        onSelectLocation(selectedPlace.location);
+        if (onSelectLocation) onSelectLocation(selectedPlace.location);
+        if (onSelectCompleteLocation) {
+          onSelectCompleteLocation(selectedPlace); 
+        }
+        
         inputEl.current.value = ""; // Clear input after selection
       }
     }

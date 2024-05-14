@@ -237,6 +237,7 @@ const Page = () => {
           </ul>
         </div>
       </div>
+      <Toaster/>
     </>
   );
 };

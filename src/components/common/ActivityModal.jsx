@@ -3,7 +3,7 @@ import SearchForm from "@/components/GoogleSearchForm/searchForm";
 import QuantityCounter from "@/uitils/QuantityCounter";
 import SelectComponent from "@/uitils/SelectComponent";
 import useActivity from "@/hooks/useActivity";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const ActivityModal = ({ onSave, onClose }) => {
   const [formData, setFormData] = useState({
@@ -19,11 +19,20 @@ const ActivityModal = ({ onSave, onClose }) => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     //console.log("Submitting Form Data:", formData);
-    await createActivity(formData);
+    try {
+      const activity = await createActivity(formData);
+    if(onSave){
+      onSave(activity);
+    }
     onClose(); // Close modal after saving data
+    } catch (error) {
+      console.error("Error creating activity:", error);
+      toast.error("Failed to create activity.");
+    }
+    
   };
   const handleLocationSelect = (location) => {
-    console.log("Location received in ActivityModal:", location);
+    //console.log("Location received in ActivityModal:", location);
     setFormData({...formData, location});
 };
 

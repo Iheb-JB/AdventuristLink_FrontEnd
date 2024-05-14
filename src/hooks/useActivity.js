@@ -11,12 +11,13 @@ const useActivity = ()=>{
 
     const createActivity = async(activityData)=>{
         try {
-            //console.log("Sending Activity Data to API:", activityData);
             const response = await  api.post('/activities', activityData);
            setActivities([...activities, response.data.activity]);
            toast.success('Activity created Successfully');
+           return response.data.activity;
         } catch (error) {
             toast.error("Failed to create activity: " + error.message);
+            throw error;
         }
         
     }

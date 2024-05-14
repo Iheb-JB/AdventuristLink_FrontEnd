@@ -8,13 +8,21 @@ import React, { useContext, useState } from "react";
 import ActivityModal from "@/components/common/ActivityModal";
 import { AuthContext } from "@/hooks/AuthContext";
 import { Toast } from "bootstrap";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import useItinerary from "@/hooks/useItinerary";
 const page = () => {
   const { showActivityModal, toggleActivityModal } = useContext(AuthContext);
-  const [ activityModalData, setActivityModalData] = useState({});
-  const handleSaveModalData = (data) => {
-    console.log(data);
-    setActivityModalData(data);
+  //const [ activityModalData, setActivityModalData] = useState({});
+  const {itinerary, addDestination, addParticipant, createItinerary}= useItinerary();
+  const [selectedActivities, setSelectedActivities] = useState([]);
+  const handleSaveModalData = (activity) => {
+    console.log(activity);
+    if(activity && activity._id){
+      setSelectedActivities(prevActivities =>[...prevActivities, activity._id]);
+      toast.success('Activity added to the itinerary');
+    }else{
+      toast.error('Invalid activity data received');
+    }
     // You can perform any other actions you need with the saved data here
   };
   const [formData, setFormData] = useState({
@@ -22,8 +30,49 @@ const page = () => {
     startDate: "",
     endDate: "",
     description: "",
-    groupSize: 1,
+    groupSize:3,
+    destinations:[],
+    activities: [],
+    participants:[]
   });
+
+  const handleCompleteLocationSelect = (selectedPlace) => {
+    console.log("Complete location data received:", selectedPlace);
+    setFormData(prevFormData => ({
+        ...prevFormData,
+        destinations: [...prevFormData.destinations, selectedPlace]
+    }));
+};
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    try {
+      const destinationIds = await Promise.all(formData.destinations.map(destination =>
+        addDestination({
+          name: destination.name,
+          location: destination.location
+        })
+      ));
+      console.log(destinationIds);
+      console.log(selectedActivities);
+      console.log({
+        ...formData,
+        destinations: destinationIds.map(dest => dest._id),
+        activities: selectedActivities,
+        participants: []
+     });
+      await createItinerary({
+         ...formData,
+         destinations: destinationIds.map(dest => dest._id),
+         activities: selectedActivities,
+         participants: []
+      });
+    } catch (error) {
+        toast.error('Failed to process the itinerary form :', error);
+    }
+  }
+
+
   return (
     <>
       <Header2 />
@@ -125,7 +174,7 @@ const page = () => {
                     <h4>Create your own Itinerary</h4>
                     <p>
                       Design your dream tarvel itinerary and let other travelers
-                      enikoy it with you!
+                      enjoy it with you!
                     </p>
                     <div className="nav nav-pills mb-40" role="tablist">
                       <button
@@ -142,7 +191,7 @@ const page = () => {
                       </button>
                     </div>
                     <div className="sidebar-booking-form">
-                      <form>
+                      <form onSubmit={handleSubmit}>
                         <div className="form-inner mb-20">
                           <label>
                             Title <span>*</span>
@@ -157,7 +206,7 @@ const page = () => {
                           />
                         </div>
                         <div className="form-inner mb-20">
-                          <SearchForm label={"destination"} />
+                          <SearchForm label={"destination"} value={formData.destinations} onSelectCompleteLocation={handleCompleteLocationSelect} />
                         </div>
                         <div className="tour-date-wrap mb-50">
                           <h6>Select Your start date:</h6>
@@ -266,6 +315,7 @@ const page = () => {
       </div>
       <Toaster/>
     </>
+    
   );
 };
 
