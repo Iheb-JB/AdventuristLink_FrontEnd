@@ -1,86 +1,36 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ModalVideo from "react-modal-video";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import QuantityCounter from "@/uitils/QuantityCounter";
 import Lightbox from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
-import Newslatter from "@/components/common/Newslatter";
 import Footer from "@/components/footer/Footer";
 import Header2 from "@/components/header/Header2";
 import Icon from "@/uitils/Icon";
+import { AuthContext } from "@/hooks/AuthContext";
+import ReviewModal from "@/components/common/ReviewModal";
 const Page = () => {
   const [isOpen, setOpen] = useState(false);
   const [isOpenimg, setOpenimg] = useState({
     openingState: false,
     openingIndex: 0,
   });
-  const images = [
-    {
-      id: 1,
-      imageBig: "/assets/img/innerpage/package-01.jpg",
-    },
-    {
-      id: 2,
-      imageBig: "/assets/img/innerpage/package-02.jpg",
-    },
-    {
-      id: 3,
-      imageBig: "/assets/img/innerpage/package-03.jpg",
-    },
-    {
-      id: 4,
-      imageBig: "/assets/img/innerpage/package-04.jpg",
-    },
-    {
-      id: 5,
-      imageBig: "/assets/img/innerpage/package-05.jpg",
-    },
-    {
-      id: 6,
-      imageBig: "/assets/img/innerpage/package-06.jpg",
-    },
-  ];
+  const {showReviewModal,toggleReviewModal} = useContext(AuthContext);
+
+  const review_modal_show = () => {    
+    toggleReviewModal();
+    console.log(showReviewModal);
+  }
   return (
     <>
       <Header2 />
       <Breadcrumb pagename="Itinerary Details" pagetitle="  Itinerary Details" />
       <div className="package-details-area pt-120 mb-120 position-relative">
         <div className="container">
-          <div className="row">
-            <div className="co-lg-12">
-              <div className="package-img-group mb-50">
-                <div className="row align-items-center g-3">
-                  <div className="col-lg-6">
-                    <div className="gallery-img-wrap">
-                      <img src="/assets/img/innerpage/package-01.jpg" alt="" />
-                      <a>
-                        <i
-                          className="bi bi-eye"
-                          onClick={() =>
-                            setOpenimg({ openingState: true, openingIndex: 0 })
-                          }
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="others-image-wrap d-none">
-            <a
-              href="assets/img/innerpage/package-01.jpg"
-              data-fancybox="images"
-            >
-              <img src="/assets/img/innerpage/blog-grid-img3.jpg" alt="" />
-            </a>
-          </div>
           <div className="row g-xl-4 gy-5">
-            <div className="col-xl-8">
               <h2>
                 Experience the tour of excitement with the most adventurous
                 activities.
@@ -114,7 +64,7 @@ const Page = () => {
                 within your destination. This can include flights, trains,
                 buses, rental cars, or even cruises.
               </p>
-              <h4>Itinerary</h4>
+              <h4>Itinerary plan :</h4>
               <div className="accordion tour-plan" id="tourPlan">
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingOne">
@@ -234,10 +184,10 @@ const Page = () => {
                 </div>
               </div>
               <div className="review-wrapper">
-                <h4>Customer Review</h4>
+                <h4>Other travelers Review</h4>
                 <div className="review-box">
                   <div className="total-review">
-                    <h2>9.5</h2>
+                    <h2>4.5</h2>
                     <div className="review-wrap">
                       <ul className="star-list">
                         <li>
@@ -256,113 +206,19 @@ const Page = () => {
                           <i className="bi bi-star-half" />
                         </li>
                       </ul>
-                      <span>2590 Reviews</span>
                     </div>
                   </div>
-                  {/* model for review */}
-                  <div
-                    className="modal fade"
-                    id="exampleModalToggle"
-                    aria-hidden="true"
-                    tabIndex={-1}
-                  >
-                    <div className="modal-dialog modal-dialog-centered">
-                      <div className="modal-content">
-                        <div className="modal-body">
-                          <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <i className="bi bi-x-lg" />
-                          </button>
-                          <div className="row g-2">
-                            <div className="col-lg-8">
-                              <div className="review-from-wrapper">
-                                <h4>Write Your Review</h4>
-                                <form>
-                                  <div className="row">
-                                    <div className="col-md-6 mb-20">
-                                      <div className="form-inner">
-                                        <label>Name</label>
-                                        <input
-                                          type="text"
-                                          placeholder="Enter Your Name:"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="col-md-6 mb-20">
-                                      <div className="form-inner">
-                                        <label>Email</label>
-                                        <input
-                                          type="email"
-                                          placeholder="Enter Your Email:"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="col-lg-12 mb-20">
-                                      <div className="form-inner">
-                                        <label>Review*</label>
-                                        <textarea
-                                          name="message"
-                                          placeholder="Enter Your Review..."
-                                          defaultValue={""}/>
-                                      </div>
-                                    </div>
-                                    <div className="col-lg-12 mb-40">
-                                      <div className="star-rating-wrapper">
-                                        <ul className="star-rating-list">
-                                          <li>
-                                            <div
-                                              className="rating-container"
-                                              data-rating={0}
-                                            >
-                                              <i className="bi bi-star-fill star-icon" />
-                                              <i className="bi bi-star-fill star-icon" />
-                                              <i className="bi bi-star-fill star-icon" />
-                                              <i className="bi bi-star-fill star-icon" />
-                                              <i className="bi bi-star-fill star-icon" />
-                                            </div>
-                                            <span>Overall</span>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                    </div>
-                                    <div className="col-lg-12">
-                                      <button
-                                        type="submit"
-                                        className="primary-btn1">
-                                        Submit Now
-                                      </button>
-                                    </div>
-                                  </div>
-                                </form>
-                              </div>
-                            </div>
-                            <div className="col-lg-4 d-lg-flex d-none">
-                              <div className="modal-form-image">
-                                <img
-                                  src="/assets/img/innerpage/form-image.jpg"
-                                  alt="image"
-                                  className="img-fluid"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <a
+                 
+                  <button
                     className="primary-btn1"
                     data-bs-toggle="modal"
-                    href="#exampleModalToggle"
-                    role="button"
+                    data-bs-target="#exampleModalToggle"
+                    onClick={review_modal_show}
                   >
                     GIVE A RATING
-                  </a>
+                  </button>
                 </div>
+                
                 <div className="review-area">
                   <ul className="comment">
                     <li>
@@ -437,32 +293,10 @@ const Page = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
-            </div>
+              </div>  
+              {showReviewModal &&  <ReviewModal/>}
           </div>
         </div>
-        <Lightbox
-          className="img-fluid"
-          open={isOpenimg.openingState}
-          plugins={[Fullscreen]}
-          index={isOpenimg.openingIndex}
-          close={() => setOpenimg(false)}
-          styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
-          slides={images.map(function (elem) {
-            return { src: elem.imageBig };
-          })}
-        />
-        <React.Fragment>
-          <ModalVideo
-            channel="youtube"
-            onClick={() => setOpen(true)}
-            isOpen={isOpen}
-            animationSpeed="350"
-            videoId="r4KpWiK08vM"
-            ratio="16:9"
-            onClose={() => setOpen(false)}
-          />
-        </React.Fragment>
       </div>
       <Footer />
     </>

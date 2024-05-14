@@ -22,6 +22,7 @@ import LoginModal from "../common/LoginModal";
 import SignUpModal from "../common/SignupModel";
 import NotificationModal from "../common/NotificationModal";
 import PasswordResetModal from "../common/PasswordResetModal";
+import ReviewModal from "../common/ReviewModal";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
 const initialState = {
@@ -81,10 +82,12 @@ const Header2 = () => {
     showSignUpModal,
     showNotificationModal,
     showPasswordResetModal,
+    showReviewModal,
     toggleLoginModal,
     toggleSignUpModal,
     toggleNotificationModal,
     togglePasswordResetModal,
+    toggleReviewModal
   } = useContext(AuthContext);
   const headerRef = useRef(null);
   const handleScroll = () => {
@@ -313,6 +316,7 @@ const Header2 = () => {
       {showPasswordResetModal && <PasswordResetModal />}
       {showNotificationModal && <NotificationModal />}
       {showPasswordResetModal && <PasswordResetModal/>}
+      {showReviewModal &&  <ReviewModal/>}
       <div
         className={`right-sidebar-menu ${
           state.isRightSidebar ? "show-right-menu" : ""

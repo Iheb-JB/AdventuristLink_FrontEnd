@@ -1,7 +1,10 @@
+import { AuthContext } from "@/hooks/AuthContext";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import ReviewModal from "./ReviewModal";
 
 const Breadcrumb = ({ pagename, pagetitle }) => {
+  const {showReviewModal,toggleReviewModal} = useContext(AuthContext);
   return (
     <div
       className="breadcrumb-section"
@@ -19,6 +22,7 @@ const Breadcrumb = ({ pagename, pagetitle }) => {
           </div>
         </div>
       </div>
+      {showReviewModal && <ReviewModal/>}
     </div>
   );
 };

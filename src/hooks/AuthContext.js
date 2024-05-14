@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showActivityModal, setShowActivityModal] = useState(false);
   const [showPasswordResetModal, setShowPasswordResetModal]= useState(false);
+  const [showReviewModal, setShowReviewModal]= useState(false);
   const [authUser, setAuthUser] = useState(null);
 
   const toggleLoginModal = () => {
@@ -28,8 +29,12 @@ const AuthProvider = ({ children }) => {
   };
 
   const togglePasswordResetModal = ()=>{
-    console.log("Toggling Password Reset Modal: ", !showPasswordResetModal);
+    //console.log("Toggling Password Reset Modal: ", !showPasswordResetModal);
      setShowPasswordResetModal(!showPasswordResetModal);
+  };
+
+  const toggleReviewModal =()=>{
+      setShowReviewModal(!showReviewModal);
   };
 
   useEffect(()=>{
@@ -50,12 +55,14 @@ const AuthProvider = ({ children }) => {
         showActivityModal,
         authUser,
         showPasswordResetModal,
+        showReviewModal,
         toggleLoginModal,
         toggleSignUpModal,
         toggleNotificationModal,
         toggleActivityModal,
         setAuthUser,
         togglePasswordResetModal,
+        toggleReviewModal,
       }}
     >
       {children}
