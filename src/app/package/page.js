@@ -323,6 +323,7 @@ const page = () => {
                   </div>
                 </div>
               </div>
+              
               <div className="row">
                 <div className="col-lg-12">
                   <nav className="inner-pagination-area">

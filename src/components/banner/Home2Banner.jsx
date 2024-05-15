@@ -149,26 +149,6 @@ const Home2Banner = () => {
                         Itinerary
                       </button>
                     </li>
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link"
-                        id="activities-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#activities"
-                        type="button"
-                        role="tab"
-                        aria-controls="activities"
-                        aria-selected="false"
-                      >
-                        <Icon
-                          name="activities"
-                          width={23}
-                          height={23}
-                          viewBox="0 0 23 23"
-                        ></Icon>
-                        Activities
-                      </button>
-                    </li>
                   </ul>
                 </div>
                 <div className="filter-group">
