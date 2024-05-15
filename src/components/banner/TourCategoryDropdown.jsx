@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const TourCategoryDropdown = ({ data, labelType, style,noScroll }) => {
+const TourCategoryDropdown = ({ data, labelType, style,noScroll, onSelectType }) => {
   const [isActive, setIsActive] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(
     data.length > 0 ? data[0] : ""
@@ -13,6 +13,7 @@ const TourCategoryDropdown = ({ data, labelType, style,noScroll }) => {
 
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
+    onSelectType(category);
     setIsActive(false);
   };
 

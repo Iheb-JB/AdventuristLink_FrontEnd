@@ -6,7 +6,7 @@ const scriptOptions = {
   libraries: ["places"],
 };
 
-const DestinationSearch = ({ destination, style }) => {
+const DestinationSearch = ({ destination, style ,onSelectDestination}) => {
   const { isLoaded, loadError } = useLoadScript(scriptOptions);
   const [autocomplete, setAutocomplete] = useState(null);
   const inputEl = useRef(null);
@@ -31,6 +31,7 @@ const DestinationSearch = ({ destination, style }) => {
           placeId: place.place_id,
           address: place.formatted_address,
         };
+        onSelectDestination(place.name, selectedPlace.location);
       }
     }
   };

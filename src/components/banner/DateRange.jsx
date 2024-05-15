@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const DateRange = ({label="Check in - Check out",style=""}) => {
+const DateRange = ({label="Check in - Check out",style="",onDateChange}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
@@ -10,6 +10,7 @@ const DateRange = ({label="Check in - Check out",style=""}) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+    onDateChange(start,end);
   };
 
   return (

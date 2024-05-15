@@ -8,6 +8,7 @@ import Newslatter from "@/components/common/Newslatter";
 import Footer from "@/components/footer/Footer";
 import Header2 from "@/components/header/Header2";
 import Icon from "@/uitils/Icon";
+import DateRange from "@/components/banner/DateRange";
 
 const page = () => {
   return (
@@ -27,25 +28,33 @@ const page = () => {
                     <div className="single-search-box">
                       <div className="icon">
                        <Icon name="destSearch" width={27}  height={27}  viewBox="0 0 27 27"></Icon>
-                      </div>
-                      <DestinationSearch />
+                      </div >
+                      <DestinationSearch labelType="Destination" />
                     </div>
                   </div>
-                  <div className="col-xl-3 col-sm-6 d-flex justify-content-center">
-                    <div className="single-search-box">
-                      <div className="icon">
-                      <Icon name="itinerary" width={27}  height={27}  viewBox="0 0 27 27"></Icon>
-                      </div>
-                      <TourCategoryDropdown
-                        labelType="Iyinerary Type"
-                        data={[
-                          "Family Tour",
-                          "Honeymoon Tour",
-                          "Group Tour",
-                          "Adventure Tour",
-                          "Solo Tour",
-                        ]}
-                      />
+                  <div className="col-xl-3 col-sm-6 d-flex justify-content-center divider">
+                              <div className="single-search-box">
+                                <div className="icon">
+                                  <Icon
+                                    name="itinType"
+                                    width={27}
+                                    height={27}
+                                    viewBox="0 0 27 27"
+                                  ></Icon>
+                                </div>
+                                <TourCategoryDropdown
+                                  style="style-2"
+                                  noScroll="two"
+                                  labelType="Itinerary Type"
+                                  data={[
+                                    "Cultural and city Exploration",
+                                   "Food and Culinary Experience",
+                                   "Adventure and Outdoor Activities",
+                                  "Relaxation and Wellness", 
+                                  "Party , Festivals and Events",
+                                  "Other"
+                                  ]}
+                             />
                     </div>
                   </div>
                   <div className="col-xl-3 col-sm-6 d-flex justify-content-center">
@@ -53,9 +62,9 @@ const page = () => {
                       <div className="icon">
                       <Icon name="activities" width={27}  height={27}  viewBox="0 0 27 27"></Icon>
                       </div>
-                      <TourCategoryDropdown
-                        labelType="Destination"
-                        data={["Economy", "Luxury", "Delux"]}
+                      <DateRange
+                        label="when"
+                         style="style-2"
                       />
                     </div>
                   </div>

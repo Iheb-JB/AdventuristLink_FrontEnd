@@ -13,11 +13,20 @@ import TourCategoryDropdown from "./TourCategoryDropdown";
 import TourDateDropdown from "./TourDateDropdown";
 import DateRange from "./DateRange";
 import Icon from "@/uitils/Icon";
+import useSearch from "@/hooks/useSearch";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
 const Home2Banner = () => {
   const [index, setIndex] = useState(0);
   const animateTextContainerRef = useRef(null);
+  const { searchItineraries } = useSearch();
+    const [searchParams, setSearchParams] = useState({
+        searchString: '',
+        startDate: '',
+        endDate: '',
+        type: '',
+        location: {}
+    });
 
   useEffect(() => {
     const animateText = () => {
@@ -62,6 +71,15 @@ const Home2Banner = () => {
       },
     };
   });
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    console.log('Submitting with params:', searchParams);
+    try {
+      await searchItineraries(searchParams);
+    } catch (error) {
+      console.error("Error during search:", error);
+    }
+  }
   return (
     <>
       <div className="home2-banner-area">
@@ -158,7 +176,7 @@ const Home2Banner = () => {
                       id="tour"
                       role="tabpanel"
                     >
-                      <form>
+                      <form onSubmit={handleSubmit}>
                         <div className="filter-area">
                           <div className="row g-xl-4 gy-4">
                             <div className="col-xl-3 col-sm-6 d-flex justify-content-center divider">
@@ -174,6 +192,7 @@ const Home2Banner = () => {
                                 <DestinationSearch
                                   destination="Destination"
                                   style="style-2"
+                                  onSelectDestination={(name,location)=>setSearchParams(prev=>({...prev, searchString:name, location}))}
                                 />
                               </div>
                             </div>
@@ -192,112 +211,20 @@ const Home2Banner = () => {
                                   noScroll="two"
                                   labelType="Itinerary Type"
                                   data={[
-                                    "Family Tour",
-                                    "Honeymoon Tou",
-                                    "Group Tour",
-                                    "Adventure Tour",
-                                    "Solo Tour",
+                                    "Cultural and city Exploration",
+                                   "Food and Culinary Experience",
+                                   "Adventure and Outdoor Activities",
+                                  "Relaxation and Wellness", 
+                                  "Party , Festivals and Events",
+                                  "Other"
                                   ]}
+                                  onSelectType={(type)=>setSearchParams(prev =>({...prev, type}))}
                                 />
                               </div>
                             </div>
                             <div className="col-xl-3 col-sm-6 d-flex justify-content-center divider">
                               <div className="single-search-box">
-                                <div className="icon">
-                                  <Icon
-                                    name="dateIcon"
-                                    width={27}
-                                    height={27}
-                                    viewBox="0 0 27 27"
-                                  ></Icon>
-                                </div>
-                                <TourDateDropdown
-                                  style="style-2"
-                                  noScroll="two"
-                                  labelType="When"
-                                  data={[
-                                    "January",
-                                    "February",
-                                    "March",
-                                    "April",
-                                    "May",
-                                    "June",
-                                    "July",
-                                    "August",
-                                    "September",
-                                    "October",
-                                    "November",
-                                    "December",
-                                  ]}
-                                />
-                              </div>
-                            </div>
-                            <div className="col-xl-3 col-sm-6 d-flex justify-content-center">
-                              <div className="single-search-box">
-                                <div className="icon">
-                                  <Icon
-                                    name="peopleIcon"
-                                    width={27}
-                                    height={27}
-                                    viewBox="0 0 27 27"
-                                  ></Icon>
-                                </div>
-                                <div className="searchbox-input">
-                                  <label>Group Size</label>
-                                  <QuantityCounter />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <button type="submit">Search</button>
-                      </form>
-                    </div>
-                    <div
-                      className="tab-pane fade"
-                      id="activities"
-                      role="tabpanel"
-                    >
-                      <form>
-                        <div className="filter-area">
-                          <div className="row g-xl-4 gy-4">
-                            <div className="col-xl-3 col-md-6 d-flex justify-content-center divider">
-                              <div className="single-search-box">
-                                <div className="icon">
-                                  <Icon
-                                    name="destSearch"
-                                    width={27}
-                                    height={27}
-                                    viewBox="0 0 27 27"
-                                  ></Icon>
-                                </div>
-                                <DestinationSearch
-                                  destination="Location"
-                                  style="style-2"
-                                />
-                              </div>
-                            </div>
-                            <div className="col-xl-3 col-md-6 d-flex justify-content-center divider">
-                              <div className="single-search-box">
-                                <div className="icon">
-                                  <Icon
-                                    name="itinType"
-                                    width={27}
-                                    height={27}
-                                    viewBox="0 0 27 27"
-                                  ></Icon>
-                                </div>
-                                <TourCategoryDropdown
-                                  style="style-2"
-                                  noScroll="two"
-                                  labelType="Activities Type"
-                                  data={["Adventure", "Cultural", "Historical"]}
-                                />
-                              </div>
-                            </div>
-                            <div className="col-xl-3 col-md-6 d-flex justify-content-center divider">
-                              <div className="single-search-box">
-                                <div className="icon">
+                              <div className="icon">
                                   <Icon
                                     name="dateIcon"
                                     width={27}
@@ -306,25 +233,14 @@ const Home2Banner = () => {
                                   ></Icon>
                                 </div>
                                 <DateRange
-                                  label="Activite Day"
+                                  label="when"
                                   style="style-2"
+                                  onDateChange={(start, end)=> setSearchParams(prev =>({
+                                    ...prev,
+                                    startDate: start ? start.toISOString() : '',
+                                    endDate: end ? end.toISOString() : '',
+                                  }))}
                                 />
-                              </div>
-                            </div>
-                            <div className="col-xl-3 col-md-6 d-flex justify-content-center">
-                              <div className="single-search-box">
-                                <div className="icon">
-                                  <Icon
-                                    name="peopleIcon"
-                                    width={27}
-                                    height={27}
-                                    viewBox="0 0 27 27"
-                                  ></Icon>
-                                </div>
-                                <div className="searchbox-input">
-                                  <label>Traveler</label>
-                                  <QuantityCounter />
-                                </div>
                               </div>
                             </div>
                           </div>
