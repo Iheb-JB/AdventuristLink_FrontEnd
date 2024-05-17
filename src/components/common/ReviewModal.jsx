@@ -28,9 +28,10 @@ const ReviewModal = ()=>{
        <>
        {/* model for review */}
        <div
-       className="modal fade"
+       className="modal review-modal"
        id="reviewModal"
        aria-hidden="true"
+       data-bs-keyboard="false"
        tabIndex={-1} >
        <div className="modal-dialog modal-dialog-centered">
          <div className="modal-content">

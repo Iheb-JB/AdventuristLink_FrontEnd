@@ -29004,7 +29004,8 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 .modal.signup-modal,
 .modal.notification-modal,
 .modal.activity-modal,
-.modal.passwordReset-modal
+.modal.passwordReset-modal,
+.modal.review-modal
 {
   display: block !important;
   visibility: visible !important;

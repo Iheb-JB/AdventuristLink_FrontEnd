@@ -20,7 +20,7 @@ const Page = () => {
   });
   const {showReviewModal,toggleReviewModal} = useContext(AuthContext);
 
-  const review_modal_show = () => {    
+  const review_modal_show = () => {
     toggleReviewModal();
     //console.log(showReviewModal);
   }
@@ -37,7 +37,7 @@ const Page = () => {
               </h2>
               <ul className="tour-info-metalist">
                 <li>
-                   <Icon name="littleDate" width={14}  height={14}  viewBox="0 0 14 14"></Icon> 
+                   <Icon name="littleDate" width={14}  height={14}  viewBox="0 0 14 14"></Icon>
                   4 Days / 5 Night
                 </li>
                 <li>
@@ -208,7 +208,7 @@ const Page = () => {
                       </ul>
                     </div>
                   </div>
-                 
+
                   <button
                     className="primary-btn1"
                     data-bs-toggle="modal"
@@ -218,7 +218,7 @@ const Page = () => {
                     GIVE A RATING
                   </button>
                 </div>
-                
+
                 <div className="review-area">
                   <ul className="comment">
                     <li>
@@ -293,12 +293,10 @@ const Page = () => {
                     </li>
                   </ul>
                 </div>
-              </div>  
-              
+              </div>
           </div>
         </div>
       </div>
-      {showReviewModal &&  <ReviewModal/>}
       <Footer />
     </>
   );
