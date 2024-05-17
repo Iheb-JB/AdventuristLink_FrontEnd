@@ -5,6 +5,7 @@ import "../../../public/assets/css/dashboard.css";
 import Link from "next/link";
 import Header2 from "@/components/header/Header2";
 import Icon from "@/uitils/Icon";
+import { Toaster } from "react-hot-toast";
 const Page = () => {
   const handleContainerClick = (event) => {
     const target = event.target;

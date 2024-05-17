@@ -113,19 +113,7 @@ const ActivityModal = ({ onSave, onClose }) => {
                       placeholder="Activity type"
                       />
                 </div>
-                <div className="number-input-item adults">
-                  <label className="number-input-lable">
-                    Group Size:<span></span>
-                  </label>
-                  <QuantityCounter
-                    value={formData.groupSize}
-                    onChange={(value) =>
-                      setFormData({ ...formData, groupSize: value })
-                    }
-                    incIcon="bx bx-plus"
-                    dcrIcon="bx bx-minus"
-                  />
-                </div>
+               
                 <div className="form-inner mb-30">
                   <label>
                     Description <span>*</span>

@@ -29,7 +29,7 @@ const ReviewModal = ()=>{
        {/* model for review */}
        <div
        className="modal fade"
-       id="exampleModalToggle"
+       id="reviewModal"
        aria-hidden="true"
        tabIndex={-1} >
        <div className="modal-dialog modal-dialog-centered">
@@ -69,7 +69,7 @@ const ReviewModal = ()=>{
                              onChange={(e)=>
                                 setReview({...review, content: e.target.value})
                               }
-                             defaultValue={""}/>
+                             />
                          </div>
                        </div>
                        <div className="col-lg-12 mb-40">

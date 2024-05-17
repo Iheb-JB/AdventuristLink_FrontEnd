@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useContext, useState } from "react";
 import ModalVideo from "react-modal-video";
 import Breadcrumb from "@/components/common/Breadcrumb";
@@ -22,7 +22,7 @@ const Page = () => {
 
   const review_modal_show = () => {    
     toggleReviewModal();
-    console.log(showReviewModal);
+    //console.log(showReviewModal);
   }
   return (
     <>
@@ -212,7 +212,7 @@ const Page = () => {
                   <button
                     className="primary-btn1"
                     data-bs-toggle="modal"
-                    data-bs-target="#exampleModalToggle"
+                    data-bs-target="#reviewModal"
                     onClick={review_modal_show}
                   >
                     GIVE A RATING
@@ -294,10 +294,11 @@ const Page = () => {
                   </ul>
                 </div>
               </div>  
-              {showReviewModal &&  <ReviewModal/>}
+              
           </div>
         </div>
       </div>
+      {showReviewModal &&  <ReviewModal/>}
       <Footer />
     </>
   );

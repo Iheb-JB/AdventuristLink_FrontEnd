@@ -16,7 +16,6 @@ const page = () => {
   const {itinerary, addDestination, addParticipant, createItinerary}= useItinerary();
   const [selectedActivities, setSelectedActivities] = useState([]);
   const handleSaveModalData = (activity) => {
-    console.log(activity);
     if(activity && activity._id){
       setSelectedActivities(prevActivities =>[...prevActivities, activity._id]);
       toast.success('Activity added to the itinerary');
@@ -53,14 +52,6 @@ const page = () => {
           location: destination.location
         })
       ));
-      console.log(destinationIds);
-      console.log(selectedActivities);
-      console.log({
-        ...formData,
-        destinations: destinationIds.map(dest => dest._id),
-        activities: selectedActivities,
-        participants: []
-     });
       await createItinerary({
          ...formData,
          destinations: destinationIds.map(dest => dest._id),
@@ -176,20 +167,6 @@ const page = () => {
                       Design your dream tarvel itinerary and let other travelers
                       enjoy it with you!
                     </p>
-                    <div className="nav nav-pills mb-40" role="tablist">
-                      <button
-                        className="nav-link show active"
-                        id="v-pills-booking-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#v-pills-booking"
-                        type="button"
-                        role="tab"
-                        aria-controls="v-pills-booking"
-                        aria-selected="true"
-                      >
-                        Start now
-                      </button>
-                    </div>
                     <div className="sidebar-booking-form">
                       <form onSubmit={handleSubmit}>
                         <div className="form-inner mb-20">
@@ -250,11 +227,11 @@ const page = () => {
                         </div>
                         <div className="form-inner mb-20">
                           <label>
-                            Participants <span>*</span>
+                            Participants <span></span>
                           </label>
                           <input
                             type="text"
-                            placeholder="change this to add participants with username"
+                            placeholder="Look for participants with username"
                           />
                         </div>
                         <div className="number-input-item adults">
