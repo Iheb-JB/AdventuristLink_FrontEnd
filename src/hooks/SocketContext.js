@@ -4,16 +4,13 @@ import { io } from "socket.io-client";
 
 
 const SocketContext = createContext();
-
 export const useSocketContext= ()=>{
     return useContext(SocketContext);
 }
-
 const SocketContextProvider = ({ children })=>{
     const [socket, setSocket]= useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
     const {authUser} = useContext(AuthContext);
-
     useEffect(()=>{
         if(authUser){
             const socket = io("http://localhost:8000",{
@@ -32,8 +29,7 @@ const SocketContextProvider = ({ children })=>{
                 setSocket(null);
             }
         }
-    },[]);
-
+    },[authUser]);
     return(
         <SocketContext.Provider value={{socket,onlineUsers}}>{children}</SocketContext.Provider>
     );

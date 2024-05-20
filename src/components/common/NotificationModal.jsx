@@ -30,28 +30,18 @@ const NotificationModal = () => {
                 </div>
                 <div className="content">
                   <div className="notification-item">
-                    <div className="type">Itinerary Update</div>
+                    <div className="type">FellowTravelerRequest</div>
                     <div className="message">
-                      You have been removed from Itinerary Amazing Adventure in
-                      New Zealand
+                    Your fellow traveler request to amino_slov for the itinerary Cultural Riches of  North Africa has been accepted!
                     </div>
-                    <div className="timestamp">2021.10.12</div>
+                    <div className="timestamp">2024.05.20</div>
                   </div>
                   <div className="notification-item markAsRead">
                     <div className="type">Itinerary Update</div>
                     <div className="message">
-                      You have been removed from Itinerary Amazing Adventure in
-                      New Zealand
+                      You itinerary Balkan adventure and culinary tour have been updated!
                     </div>
-                    <div className="timestamp">2021.10.12</div>
-                  </div>
-                  <div className="notification-item">
-                    <div className="type">Itinerary Update</div>
-                    <div className="message">
-                      You have been removed from Itinerary Amazing Adventure in
-                      New Zealand
-                    </div>
-                    <div className="timestamp">2021.10.12</div>
+                    <div className="timestamp">2024.05.20</div>
                   </div>
                 </div>
               </div>

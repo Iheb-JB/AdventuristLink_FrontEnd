@@ -10,8 +10,10 @@ import { Toaster } from "react-hot-toast";
 
 const page = () => {
   const [image, setImage] = useState(null);
+  const [file, setFile] = useState(null);
   const [activeTab, setActiveTab] = useState("profile");
   const fileInputRef = useRef(null);
+  const imageInputRef = useRef(null);
   const {profile, setProfile, updateProfile , handleChange , handleSelectChange} = UserProfile();
 
   const{logout} = useLogout();
@@ -22,6 +24,9 @@ const page = () => {
 
   const handleButtonClick = () => {
     fileInputRef.current.click(); // Trigger file input click
+  };
+  const handleFileClick = ()=>{
+     imageInputRef.current.click();// trigger image input click
   };
   useEffect(() => {
     const profileTab = document.getElementById("profile-tab");
@@ -56,6 +61,16 @@ const page = () => {
       const reader = new FileReader(); 
       reader.onload = () => {
         setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader(); 
+      reader.onload = () => {
+        setFile(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -264,13 +279,13 @@ const page = () => {
                                 hidden
                                 onChange={handleImageUpload}
                                 //value={profile.profilePicture}
-                                ref={fileInputRef} // Reference to file input
+                                ref={fileInputRef} // Reference to image input
                                 accept="image/*"
                               />
                             </div>
                           </div>
                           <div className="upload-img-area-content">
-                            <h6>Upload Your Image</h6>
+                            <h6>Upload Your Profile picture</h6>
                             <p>
                               Image required size 300*300, JPEG or PNG format.
                             </p>
@@ -281,8 +296,47 @@ const page = () => {
                             <img
                               src={image}
                               alt="Uploaded"
-                              style={{ maxWidth: 300, maxHeight: 300 }}
+                              style={{ maxWidth: 200, maxHeight: 200 }}
                             />
+                          </div>
+                        )}
+                         <div className="upload-img-area">
+                          <div className="upload-img-wrapper">
+                            <div className="drag-area">
+                              <button
+                                type="button"
+                                className="upload-btn"
+                                onClick={handleFileClick}
+                              >
+                                <i className="bi bi-plus-lg" />
+                              </button>
+                              <input
+                                type="file"
+                                hidden
+                                onChange={handleFileUpload}
+                                //value={profile.profilePicture}
+                                ref={imageInputRef} // Reference to file input
+                                accept="application/pdf"
+                              />
+                            </div>
+                          </div>
+                          <div className="upload-img-area-content">
+                            <h6>Upload Your Identity document for verification(optional)</h6>
+                            <p>
+                              File should be in PDF format.
+                            </p>
+                          </div>
+                        </div>
+                        {file && (
+                          <div className="uploaded-image-2">
+                            <object
+                              data={file}
+                              type="application/pdf"
+                              width="100%" height="500px"
+                              style={{ maxWidth: 200, maxHeight: 200 }}
+                            >
+                              <p>Your browser does not support PDFs. Please download the PDF to view it: <a href={file}>Download PDF</a>.</p>
+                            </object>
                           </div>
                         )}
                         <div className="form-inner mb-50 mt-25">
@@ -314,19 +368,7 @@ const page = () => {
                       </div>
                       <form>
                         <div className="row">
-                          <div className="col-md-6">
-                            <div className="form-inner mb-30">
-                              <label>Old Password*</label>
-                              <input
-                                id="password4"
-                                type="password"
-                               // value={passwords.oldPassword}
-                               // onChange={handleChangeP}
-                                placeholder="*** ***"
-                                required
-                              />
-                            </div>
-                          </div>
+                         
                           <div className="col-md-6">
                             <div className="form-inner mb-30">
                               <label>New Password*</label>
@@ -373,11 +415,9 @@ const page = () => {
         <div className="dashboard-footer">
           <ul className="footer-menu-list">
             <li>
-              <a href="#">About Us</a>
+              <a href="/about">About Us</a>
             </li>
-            <li>
-              <a href="#">Terms &amp; Conditions</a>
-            </li>
+           
           </ul>
         </div>
       </div>

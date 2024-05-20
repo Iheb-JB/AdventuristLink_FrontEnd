@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ModalVideo from "react-modal-video";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import QuantityCounter from "@/uitils/QuantityCounter";
@@ -12,202 +12,127 @@ import Header2 from "@/components/header/Header2";
 import Icon from "@/uitils/Icon";
 import { AuthContext } from "@/hooks/AuthContext";
 import ReviewModal from "@/components/common/ReviewModal";
+import Link from "next/link";
 const Page = () => {
   const [isOpen, setOpen] = useState(false);
   const [isOpenimg, setOpenimg] = useState({
     openingState: false,
     openingIndex: 0,
   });
+  const [destinations, setDestinations] = useState([
+    { name: "Sousse", lat: 35.825603, lng: 10.636991 }, 
+    { name: "Tunis", lat: 36.806389, lng: 10.181667 }, 
+    { name: "Alger", lat: 36.737232, lng: 3.086472 }, 
+    { name: "Fes", lat: 34.034653, lng: -5.016193 }, 
+    { name: "Tangier", lat: 35.759465, lng: -5.834009 }
+  ]);
   const {showReviewModal,toggleReviewModal} = useContext(AuthContext);
 
   const review_modal_show = () => {
     toggleReviewModal();
-    //console.log(showReviewModal);
+    
   }
+  const scriptOptions = {
+    googleMapsApiKey: "AIzaSyCMTO6uC2oPpuii98yZi68pKaoIpq2YT_k",
+    libraries: ["places"],
+  };
+  useEffect(() => {
+    const loadMapScript = ()=>{
+    // Load script after component mounts
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${scriptOptions.googleMapsApiKey}&callback=initMap`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+    }
+
+    const initMap = () => {
+      const initialCenter = destinations.length > 0 ? 
+    { lat: destinations[0].lat, lng: destinations[0].lng } : 
+    { lat: 36.806389, lng: 10.181667 };
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: initialCenter,
+        zoom: 5,
+      });
+      // Example to add a marker at the center
+      destinations.forEach(destination => {
+        new google.maps.Marker({
+          position: new google.maps.LatLng(destination.lat, destination.lng),
+          map: map,
+          title: destination.name,
+        });
+      });
+    };
+    window.initMap = initMap;
+    loadMapScript();
+    
+  }, [destinations]);
   return (
     <>
       <Header2 />
       <Breadcrumb pagename="Itinerary Details" pagetitle="  Itinerary Details" />
-      <div className="package-details-area pt-120 mb-120 position-relative">
+      <div className="package-details-area pt-95 mb-95 position-relative">
         <div className="container">
           <div className="row g-xl-4 gy-5">
               <h2>
-                Experience the tour of excitement with the most adventurous
-                activities.
+                Cultural Riches of North Africa (Maghreb)
               </h2>
               <ul className="tour-info-metalist">
                 <li>
                    <Icon name="littleDate" width={14}  height={14}  viewBox="0 0 14 14"></Icon>
-                  4 Days / 5 Night
+                   <span style={{ fontWeight: '', margin: '0 5px' }}>15 May - 20 June 2024</span>
                 </li>
                 <li>
                 <Icon name="peopleFace" width={14}  height={14}  viewBox="0 0 14 14"></Icon>
-                  Max People : 40
+                  Max Group size : 3
                 </li>
                 <li>
                 <Icon name="activit" width={14}  height={14}  viewBox="0 0 14 14"></Icon>
-                  Italy &amp; France.
+                  Cultural &amp; Food and Culinary.
                 </li>
               </ul>
+              <ul>
+              <li>
+                  <Icon name="traveler" width={20} height={20} viewBox="0 0 20 20"></Icon>
+                   Creator: <span className="creator-name">amino_slov</span>
+                </li>
+              </ul>
+              
+              <h4>Description:</h4>
               <p>
-                Tour and travel refer to the activities related to planning,
-                organizing, and experiencing trips to various destinations for
-                leisure, exploration, adventure, or relaxation.Choose your
-                destination based on your interests and preferences, whether
-                it's a cultural experience, a natural adventure, historical
-                exploration, or a beach vacation.
+                 Explore the vibrant culture of three north african countries, from bustling marketplaces in Tunis to the historic architecture of Casablanca.
+                  Discover and enjoy the traditional meals, and search for the best activities with locals.
               </p>
-              <p>
-                Book suitable accommodation, which can range from hotels,
-                resorts, hostels, vacation rentals, or even camping depending on
-                your travel style and destination.Arrange transportation to and
-                within your destination. This can include flights, trains,
-                buses, rental cars, or even cruises.
-              </p>
-              <h4>Itinerary plan :</h4>
-              <div className="accordion tour-plan" id="tourPlan">
-                <div className="accordion-item">
-                  <h2 className="accordion-header" id="headingOne">
-                    <button
-                      className="accordion-button"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseOne"
-                      aria-expanded="true"
-                      aria-controls="collapseOne"
-                    >
-                      <span>Day 01 :</span> Departure
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseOne"
-                    className="accordion-collapse collapse show"
-                    aria-labelledby="headingOne"
-                    data-bs-parent="#tourPlan"
-                  >
-                    <div className="accordion-body">
-                      <p>
-                        Arrive Cairo airport, welcome greeting by our
-                        representative who will assist you and provide tra
-                        nsfers to your Hotel in Cairo. (the clients will inform
-                        us about their arrival time minimum 7 days before)
-                      </p>
-                      <ul>
-                        <li>
-                          <i className="bi bi-check-lg" /> Admire Big Ben,
-                          Buckingham Palace and St Paul’s Cathedral
-                        </li>
-                        <li>
-                          <i className="bi bi-check-lg" /> Chance to spot
-                          prominent landmarks of the city
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="accordion-item">
-                  <h2 className="accordion-header" id="headingTwo">
-                    <button
-                      className="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseTwo"
-                      aria-expanded="false"
-                      aria-controls="collapseTwo"
-                    >
-                      <span>Day 02 :</span> Adventure Beggins
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseTwo"
-                    className="accordion-collapse collapse"
-                    aria-labelledby="headingTwo"
-                    data-bs-parent="#tourPlan"
-                  >
-                    <div className="accordion-body">
-                      <p>
-                        Arrive Cairo airport, welcome greeting by our
-                        representative who will assist you and provide tra
-                        nsfers to your Hotel in Cairo. (the clients will inform
-                        us about their arrival time minimum 7 days before)
-                      </p>
-                      <ul>
-                        <li>
-                          <i className="bi bi-check-lg" /> Admire Big Ben,
-                          Buckingham Palace and St Paul’s Cathedral
-                        </li>
-                        <li>
-                          <i className="bi bi-check-lg" /> Chance to spot
-                          prominent landmarks of the city
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="accordion-item">
-                  <h2 className="accordion-header" id="headingFour">
-                    <button
-                      className="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseFour"
-                      aria-expanded="false"
-                      aria-controls="collapseFour"
-                    >
-                      <span>Day 03 :</span> Rest &amp; Return
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseFour"
-                    className="accordion-collapse collapse"
-                    aria-labelledby="headingFour"
-                    data-bs-parent="#tourPlan"
-                  >
-                    <div className="accordion-body">
-                      <p> return</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div className="card-content-bottom">
+                          <Link
+                            href="/package/package-details"
+                            className="primary-btn2"
+                          >
+                            Join this Itinerary
+                            <Icon name="plane" width={18}  height={18}  viewBox="0 0 18 18"></Icon>
+                          </Link>
+                        </div>
+              <h4>Itinerary activities:</h4>
+              <h6>
+                <Link href="/activities/activities-details">
+                   Traditional Craft and Artisan Workshops
+                </Link>
+              </h6>
+              <h6>
+                <Link href="/activities/activities-details">
+                Archaeological Exploration of Ancient Ruins
+                </Link>
+              </h6>
               <div className="tour-location">
                 <h4>Location Map</h4>
-                <div className="map-area mb-30">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193325.0481540361!2d-74.06757856146028!3d40.79052383652264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1660366711448!5m2!1sen!2sbd"
-                    width={600}
-                    height={450}
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
+                <div className="map-area mb-30" id="map" style={{ width: '800px', height: '450px' }}>
+                 
                 </div>
               </div>
               <div className="review-wrapper">
-                <h4>Other travelers Review</h4>
+                <h4>Only participants can leave review for this Itinerary</h4>
                 <div className="review-box">
-                  <div className="total-review">
-                    <h2>4.5</h2>
-                    <div className="review-wrap">
-                      <ul className="star-list">
-                        <li>
-                          <i className="bi bi-star-fill" />
-                        </li>
-                        <li>
-                          <i className="bi bi-star-fill" />
-                        </li>
-                        <li>
-                          <i className="bi bi-star-fill" />
-                        </li>
-                        <li>
-                          <i className="bi bi-star-fill" />
-                        </li>
-                        <li>
-                          <i className="bi bi-star-half" />
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  
 
                   <button
                     className="primary-btn1"
@@ -218,8 +143,8 @@ const Page = () => {
                     GIVE A RATING
                   </button>
                 </div>
-
-                <div className="review-area">
+              </div>
+              <div className="review-area">
                   <ul className="comment">
                     <li>
                       <div className="single-comment-area">
@@ -231,8 +156,8 @@ const Page = () => {
                         </div>
                         <div className="comment-content">
                           <div className="author-name-deg">
-                            <h6>Mr. Bowmik Haldar,</h6>
-                            <span>05 June, 2023</span>
+                            <h6>iheb_jabeur</h6>
+                            <span>20 May, 2024</span>
                           </div>
                           <ul className="review-item-list">
                             <li>
@@ -250,50 +175,21 @@ const Page = () => {
                                 <li>
                                   <i className="bi bi-star-fill" />
                                 </li>
-                                <li>
-                                  <i className="bi bi-star-half" />
-                                </li>
+                                
                               </ul>
                             </li>
                           </ul>
                           <p>
-                            A solution that we came up with is to think of
-                            sanitary pads packaging as you would tea. Tea comes
-                            individually packaged{" "}
+                          I had an incredible time on this itinerary!The destinations were breathtaking and fellow travelers were great.
+                          Amine was an excellent travel companion. He was punctual, friendly and always ready to help.{" "}
                           </p>
-                          <div className="replay-btn">
-                            <Icon name="reply" width={14}  height={11}  viewBox="0 0 14 11"></Icon>
-                            Reply (01)
-                          </div>
+                         
                         </div>
                       </div>
-                      <ul className="comment-replay">
-                        <li>
-                          <div className="single-comment-area">
-                            <div className="author-img">
-                              <img
-                                src="/assets/img/innerpage/comment-author-02.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <div className="comment-content">
-                              <div className="author-name-deg">
-                                <h6>Author Response,</h6>
-                                <span>05 June, 2023</span>
-                              </div>
-                              <p>Thanks for your review.</p>
-                              <div className="replay-btn">
-                              <Icon name="reply" width={14}  height={11}  viewBox="0 0 14 11"></Icon>
-                                Reply
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
+                     
                     </li>
                   </ul>
                 </div>
-              </div>
           </div>
         </div>
       </div>

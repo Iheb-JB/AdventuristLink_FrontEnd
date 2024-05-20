@@ -44,6 +44,7 @@ const useItinerary = ()=>{
             }
         } catch (error) {
             toast.error("Failed to create itinerary: " + error.message);
+            console.log(error.message);
         }
     };
     return {addDestination, addParticipant ,createItinerary, itinerary};

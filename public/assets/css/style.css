@@ -29117,3 +29117,17 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 .pac-container {
   z-index: +10000 !important;
 }
+
+.creator-name {
+  font-weight: bold;
+   /* This color can be adjusted to match your design */
+}
+.star-icon:hover,
+.star-icon.bi-star-fill {
+  color: gold; /* or your choice of highlight color */
+}
+.bi-star-fill {
+  color: gold;
+}
+
+

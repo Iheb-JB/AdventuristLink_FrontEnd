@@ -81,40 +81,32 @@ const page = () => {
           <div className="row gy-5 mb-70">
             <div className="col-lg-4 col-md-6">
               <div className="package-card">
-                <div className="package-card-img-wrap">
-                  <Link href="/package/package-details" className="card-img">
-                    <img src="/assets/img/home1/package-card-img1.png" alt="" />
-                  </Link>
                   <div className="batch">
-                    <span className="date">3 Days / 4 Night</span>
+                    <span className="date">bSuggested Group Size: 3</span>
                   </div>
-                </div>
                 <div className="package-card-content">
                   <div className="card-content-top">
                     <h5>
                       <Link href="/package/package-details">
-                        the Allure Italy's Rich Culture, History, and Cuisine.
+                        Cultural riches of North Africa.
                       </Link>
                     </h5>
                     <div className="location-area">
                       <ul className="location-list scrollTextAni">
                         <li>
-                          <Link href="/package/package">Alexandria</Link>
+                          <Link href="/package/package">Sousse</Link>
                         </li>
                         <li>
-                          <Link href="/package/package">Sharm El Sheikh</Link>
+                          <Link href="/package/package">Tunis</Link>
                         </li>
                         <li>
-                          <Link href="/package/package">Mansoura</Link>
+                          <Link href="/package/package">Alger</Link>
                         </li>
                         <li>
-                          <Link href="/package/package">Karachi</Link>
+                          <Link href="/package/package">Fes</Link>
                         </li>
                         <li>
-                          <Link href="/package/package">Lahore</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Islamabad</Link>
+                          <Link href="/package/package">Tangier</Link>
                         </li>
                       </ul>
                     </div>
@@ -133,40 +125,23 @@ const page = () => {
             </div>
             <div className="col-lg-4 col-md-6">
               <div className="package-card">
-                <div className="package-card-img-wrap">
-                  <Link href="/package/package-details" className="card-img">
-                    <img src="/assets/img/home1/package-card-img2.png" alt="" />
-                  </Link>
                   <div className="batch">
-                    <span className="date">7 Days / 8 Night</span>
+                    <span className="date">bSuggested Group Size: 2</span>
                   </div>
-                </div>
                 <div className="package-card-content">
                   <div className="card-content-top">
                     <h5>
                       <Link href="/package/package-details">
-                        Explore Travel NYC's Museums, Diversity, and Energy.
+                        A journey of relaxtaion in Andalucia
                       </Link>
                     </h5>
                     <div className="location-area">
                       <ul className="location-list scrollTextAni">
                         <li>
-                          <Link href="/package/package">Mecca</Link>
+                          <Link href="/package/package">Sevilla</Link>
                         </li>
                         <li>
-                          <Link href="/package/package">Medina</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Riyadh</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Doha</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Al Wakrah</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Al Rayyan</Link>
+                          <Link href="/package/package">Malaga</Link>
                         </li>
                       </ul>
                     </div>
@@ -177,319 +152,6 @@ const page = () => {
                       className="primary-btn2"
                     >
                      Join Itinerary
-                     <Icon name="plane" width={18}  height={18}  viewBox="0 0 18 18"></Icon>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="package-card">
-                <div className="package-card-img-wrap">
-                  <Link href="/package/package-details" className="card-img">
-                    <img src="/assets/img/home1/package-card-img3.png" alt="" />
-                  </Link>
-                  <div className="batch">
-                    <span className="date">5 Days / 6 Night</span>
-                  </div>
-                </div>
-                <div className="package-card-content">
-                  <div className="card-content-top">
-                    <h5>
-                      <Link href="/package/package-details">
-                        Embark Tranquility, Adventure, and Spiritual.
-                      </Link>
-                    </h5>
-                    <div className="location-area">
-                      <ul className="location-list scrollTextAni">
-                        <li>
-                          <Link href="/package/package">Alexandria</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Sharm El Sheikh</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Mansoura</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Karachi</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Lahore</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Islamabad</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="card-content-bottom">
-                    <Link
-                      href="/package/package-details"
-                      className="primary-btn2"
-                    >
-                      Join Itinerary
-                     <Icon name="plane" width={18}  height={18}  viewBox="0 0 18 18"></Icon>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="package-card">
-                <div className="package-card-img-wrap">
-                  <Link href="/package/package-details" className="card-img">
-                    <img src="/assets/img/home1/package-card-img4.png" alt="" />
-                  </Link>
-                  <div className="batch">
-                    <span className="date">8 Days / 9 Night</span>
-                  </div>
-                </div>
-                <div className="package-card-content">
-                  <div className="card-content-top">
-                    <h5>
-                      <Link href="/package/package-details">
-                        Embracing City Lights, Landm, and Iconic Culture.
-                      </Link>
-                    </h5>
-                    <div className="location-area">
-                      <ul className="location-list">
-                        <li>
-                          <Link href="/package/package">Bangalore</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Chennai</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">New Delhi</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Dhaka</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Rangpur</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Sylhet</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="card-content-bottom">
-                  
-                    <Link
-                      href="/package/package-details"
-                      className="primary-btn2"
-                    >
-                      Join Itinerary
-                     <Icon name="plane" width={18}  height={18}  viewBox="0 0 18 18"></Icon>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="package-card">
-                <div className="package-card-img-wrap">
-                  <Link href="/package/package-details" className="card-img">
-                    <img src="/assets/img/home1/package-card-img5.png" alt="" />
-                  </Link>
-                  <div className="batch">
-                    <span className="date">6 Days / 7 Night</span>
-                  </div>
-                </div>
-                <div className="package-card-content">
-                  <div className="card-content-top">
-                    <h5>
-                      <Link href="/package/package-details">
-                        A Journey of Tour Beauty and Inspiration.
-                      </Link>
-                    </h5>
-                    <div className="location-area">
-                      <ul className="location-list scrollTextAni">
-                        <li>
-                          <Link href="/package/package">Paris</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Marseille</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Bordeaux</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Madrid</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Barcelona</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Valencia</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="card-content-bottom">
-                    <Link
-                      href="/package/package-details"
-                      className="primary-btn2"
-                    >
-                    Join Itinerary
-                     <Icon name="plane" width={18}  height={18}  viewBox="0 0 18 18"></Icon>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="package-card">
-                <div className="package-card-img-wrap">
-                  <Link href="/package/package-details" className="card-img">
-                    <img src="/assets/img/home1/package-card-img6.png" alt="" />
-                  </Link>
-                  <div className="batch">
-                    <span className="date">4 Days / 5 Night</span>
-                  </div>
-                </div>
-                <div className="package-card-content">
-                  <div className="card-content-top">
-                    <h5>
-                      <Link href="/package/package-details">
-                        Adventure Art, Architecture, and Mediterranean.
-                      </Link>
-                    </h5>
-                    <div className="location-area">
-                      <ul className="location-list scrollTextAni">
-                        <li>
-                          <Link href="/package/package">Kathmandu</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Pokhara</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Lalitpur</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Jakarta</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Surabaya</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Bandung</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="card-content-bottom">
-                    <Link
-                      href="/package/package-details"
-                      className="primary-btn2"
-                    >
-                     Join Itinerary
-                     <Icon name="plane" width={18}  height={18}  viewBox="0 0 18 18"></Icon>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="package-card">
-                <div className="package-card-img-wrap">
-                  <Link href="/package/package-details" className="card-img">
-                    <img src="/assets/img/home1/package-card-img7.png" alt="" />
-                  </Link>
-                  <div className="batch">
-                    <span className="date">2 Days / 3 Night</span>
-                  </div>
-                </div>
-                <div className="package-card-content">
-                  <div className="card-content-top">
-                    <h5>
-                      <Link href="/package/package-details">
-                        Exploring ancient ruins, histor landmarks, and cultural.
-                      </Link>
-                    </h5>
-                    <div className="location-area">
-                      <ul className="location-list scrollTextAni">
-                        <li>
-                          <Link href="/package/package">Kathmandu</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Pokhara</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Lalitpur</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Jakarta</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Surabaya</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Bandung</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="card-content-bottom">
-                    <Link
-                      href="/package/package-details"
-                      className="primary-btn2"
-                    >
-                    Join Itinerary
-                     <Icon name="plane" width={18}  height={18}  viewBox="0 0 18 18"></Icon>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="package-card">
-                <div className="package-card-img-wrap">
-                  <Link href="/package/package-details" className="card-img">
-                    <img src="/assets/img/home1/package-card-img9.png" alt="" />
-                  </Link>
-                  <div className="batch">
-                    <span className="date">3 Days / 4 Night</span>
-                  </div>
-                </div>
-                <div className="package-card-content">
-                  <div className="card-content-top">
-                    <h5>
-                      <Link href="/package/package-details">
-                        Embracing City Lights, Landm, and Iconic Culture.
-                      </Link>
-                    </h5>
-                    <div className="location-area">
-                      <ul className="location-list scrollTextAni">
-                        <li>
-                          <Link href="/package/package">Kathmandu</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Pokhara</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Lalitpur</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Jakarta</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Surabaya</Link>
-                        </li>
-                        <li>
-                          <Link href="/package/package">Bandung</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="card-content-bottom">
-                    <Link
-                      href="/package/package-details"
-                      className="primary-btn2"
-                    >
-                      Join Itinerary
                      <Icon name="plane" width={18}  height={18}  viewBox="0 0 18 18"></Icon>
                     </Link>
                   </div>
@@ -508,22 +170,6 @@ const page = () => {
                   </li>
                   <li>
                     <a href="#">1</a>
-                  </li>
-                  <li>
-                    <a href="#" className="active">
-                      2
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">3</a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="bi bi-three-dots" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">6</a>
                   </li>
                   <li>
                     <a href="#" className="shop-pagi-btn">

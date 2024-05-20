@@ -1,13 +1,13 @@
 'use client'
 import useReview from "@/hooks/useReview";
 import { useState } from "react";
+import StarRating from "./StarRating";
 
 
-const ReviewModal = ()=>{
 
-    const handleClose = () => {
-        onClose(); // Call onClose function to handle modal closing
-      };
+
+const ReviewModal = ({onClose})=>{
+
     const {submitReview} = useReview();
     const [review , setReview]= useState({
        rating: 0,
@@ -23,9 +23,14 @@ const ReviewModal = ()=>{
         } catch (error) {
             console.error('Failed to submit review:', error);
         }
-    }
+    };
+    const handleClose = () => {
+      onClose(); // Call onClose function to handle modal closing
+    };
+    
     return(
        <>
+      
        {/* model for review */}
        <div
        className="modal review-modal"
@@ -43,7 +48,6 @@ const ReviewModal = ()=>{
                aria-label="Close"
                onClick={handleClose}
              >
-               <i className="bi bi-x-lg" />
              </button>
              <div className="row g-2">
                <div className="col-lg-8">
@@ -51,12 +55,12 @@ const ReviewModal = ()=>{
                    <h4>Write Your Review</h4>
                    <form onSubmit={handleSubmit}>
                      <div className="row">
-                       <div className="col-md-6 mb-20">
+                       <div className="col-md-10 mb-20">
                          <div className="form-inner">
-                           <label>UserName</label>
+                           <label>Fellow Traveller username</label>
                            <input
                              type="text"
-                             placeholder="Enter Your Name:"
+                             placeholder="Enter fellow traveler username"
                            />
                          </div>
                        </div>
@@ -74,27 +78,7 @@ const ReviewModal = ()=>{
                          </div>
                        </div>
                        <div className="col-lg-12 mb-40">
-                         <div className="star-rating-wrapper">
-                           <ul className="star-rating-list">
-                             <li>
-                               <div
-                                 className="rating-container"
-                                 data-rating={0}
-                                 value={review.rating}
-                                 onChange={(e)=>
-                                setReview({...review, rating: e.target.value})
-                              }
-                               >
-                                 <i className="bi bi-star-fill star-icon" />
-                                 <i className="bi bi-star-fill star-icon" />
-                                 <i className="bi bi-star-fill star-icon" />
-                                 <i className="bi bi-star-fill star-icon" />
-                                 <i className="bi bi-star-fill star-icon" />
-                               </div>
-                               <span>Overall</span>
-                             </li>
-                           </ul>
-                         </div>
+                       <StarRating rating={review.rating} setRating={setReview} />
                        </div>
                        <div className="col-lg-12">
                          <button
@@ -107,15 +91,7 @@ const ReviewModal = ()=>{
                    </form>
                  </div>
                </div>
-               <div className="col-lg-4 d-lg-flex d-none">
-                 <div className="modal-form-image">
-                   <img
-                     src="/assets/img/innerpage/form-image.jpg"
-                     alt="image"
-                     className="img-fluid"
-                   />
-                 </div>
-               </div>
+               
              </div>
            </div>
          </div>

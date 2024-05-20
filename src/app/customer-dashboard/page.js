@@ -10,6 +10,7 @@ import { AuthContext } from "@/hooks/AuthContext";
 import { Toast } from "bootstrap";
 import toast, { Toaster } from "react-hot-toast";
 import useItinerary from "@/hooks/useItinerary";
+import { theme } from "../../../tailwind.config";
 const page = () => {
   const { showActivityModal, toggleActivityModal } = useContext(AuthContext);
   //const [ activityModalData, setActivityModalData] = useState({});
@@ -45,6 +46,7 @@ const page = () => {
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
+    toast.success('your itinerary have been created successfully !');
     try {
       const destinationIds = await Promise.all(formData.destinations.map(destination =>
         addDestination({
@@ -60,6 +62,7 @@ const page = () => {
       });
     } catch (error) {
         toast.error('Failed to process the itinerary form :', error);
+        console.log(error.message);
     }
   }
 
@@ -131,30 +134,7 @@ const page = () => {
                   </div>
                   <div className="author-content">
                     <span>Hello, </span>
-                    <h4>username</h4>
-                  </div>
-                </div>
-              </div>
-              <div className="counter-area">
-                <div className="row row-cols-lg-5 g-3">
-                  <div className="col">
-                    <div className="counter-single">
-                      <div className="counter-icon">
-                        <Icon
-                          name="itinerary"
-                          width={55}
-                          height={55}
-                          viewBox="0 0 23 23"
-                        ></Icon>
-                      </div>
-                      <div className="counter-content">
-                        <p>Total Itineraries</p>
-                        <div className="number">
-                          <h3 className="counter">12</h3>
-                          <span>+</span>
-                        </div>
-                      </div>
-                    </div>
+                    <h4>iheb_jabeur</h4>
                   </div>
                 </div>
               </div>

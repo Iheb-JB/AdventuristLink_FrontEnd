@@ -260,7 +260,7 @@ const Header2 = () => {
         </div>
         <div className="nav-right d-flex jsutify-content-end align-items-center">
           <ul className="icon-list">
-            <li className="d-lg-flex d-none">
+          <li className="d-lg-flex d-none">
               <Link href="/customer-dashboard">
                 <Icon
                   name="profile"
@@ -271,31 +271,19 @@ const Header2 = () => {
               </Link>
             </li>
             <li className="right-sidebar-button" onClick={toggleRightSidebar}>
-              <Icon
-                name="sideBarToggle"
-                width={25}
-                height={25}
-                viewBox="0 0 25 25"
-              />
+             
             </li>
           </ul>
-          <button
-            className="signin-register primary-btn3 d-xl-flex d-none"
-            data-bs-toggle="modal"
-            data-bs-target="#user-login"
-            onClick={toggleLoginModal}
-          >
-            SignIn / Register
-          </button>
-          {/* If user logged in, message-notification should be displayed. current display:none */}
+         {/* login button */ }
+          {/* If user logged in, message-notification should be displayed. current display:none/ here message notification place */ }
           <div className="message-notification">
             <a className="icon message-icon" href="/Messenger">
               <i className="fas fa-envelope"></i>{" "}
-              <span className="badge">5</span>
+              <span className="badge"></span>
             </a>
             <a className="icon notification-icon" onClick={toggleNotificationModal}>
               <i className="fas fa-bell"></i>{" "}
-              <span className="badge">3</span>
+              <span className="badge"></span>
             </a>
           </div>
           <div
@@ -316,7 +304,7 @@ const Header2 = () => {
       {showPasswordResetModal && <PasswordResetModal />}
       {showNotificationModal && <NotificationModal />}
       {showPasswordResetModal && <PasswordResetModal/>}
-      {showReviewModal &&  <ReviewModal/>}
+      {showReviewModal &&  <ReviewModal onClose={toggleReviewModal}/>}
       <div
         className={`right-sidebar-menu ${
           state.isRightSidebar ? "show-right-menu" : ""

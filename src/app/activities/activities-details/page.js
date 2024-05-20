@@ -1,6 +1,6 @@
 
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumb from '@/components/common/Breadcrumb'
 import QuantityCounter from "@/uitils/QuantityCounter";
 import Footer from "@/components/footer/Footer";
@@ -11,6 +11,45 @@ const Page = () => {
     openingState: false,
     openingIndex: 0,
   });
+  const [destinations, setDestinations] = useState([
+    { name: "Tunis Medina", lat: 36.8008, lng: 10.1807 }
+ 
+  ]);
+  const scriptOptions = {
+    googleMapsApiKey: "AIzaSyCMTO6uC2oPpuii98yZi68pKaoIpq2YT_k",
+    libraries: ["places"],
+  };
+  useEffect(() => {
+    const loadMapScript = ()=>{
+    // Load script after component mounts
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${scriptOptions.googleMapsApiKey}&callback=initMap`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+    }
+
+    const initMap = () => {
+      const initialCenter = destinations.length > 0 ? 
+    { lat: destinations[0].lat, lng: destinations[0].lng } : 
+    { lat: 36.806389, lng: 10.181667 };
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: initialCenter,
+        zoom: 9,
+      });
+      // Example to add a marker at the center
+      destinations.forEach(destination => {
+        new google.maps.Marker({
+          position: new google.maps.LatLng(destination.lat, destination.lng),
+          map: map,
+          title: destination.name,
+        });
+      });
+    };
+    window.initMap = initMap;
+    loadMapScript();
+    
+  }, [destinations]);
  
   return (
     <>
@@ -19,32 +58,29 @@ const Page = () => {
      <div className="package-details-area pt-120 mb-120">
       <div className="container">
             <div className="eg-tag2">
-              <span>Ski touring</span>
+              <span>Ativity</span>
             </div>
-            <h2>Powder Quest: Exploring Snow-Covered Landscapes on Skis</h2>
+            <h2>Traditioal craft and artisan workshops</h2>
             <ul className="tour-info-metalist">
               <li>
                <Icon name="itinDate" width={14} height={14} viewBox="0 0 14 14"></Icon>
-                5 hours
-              </li>
-              <li>
-                <Icon name="peopleFace" width={14} height={14} viewBox="0 0 14 14"></Icon>
-                Max People : 10
+                24 May 2024
               </li>
               <li>
               <Icon name="activit" width={14} height={14} viewBox="0 0 14 14"></Icon>
-                Italy &amp; France.
+                 Cultural and city Exploration
               </li>
             </ul>
-            <p>Ski touring, also known as backcountry skiing, involves traveling across snow-covered terrain using skis. It's a blend of skiing and hiking,
-               allowing access to remote areas not reachable by ski lifts. Skiers ascend slopes using climbing skins on their skis or specialized equipment like splitboards,
-              then descend using skis. This activity offers a unique opportunity to explore untouched wilderness, experience serene landscapes,
-              and challenge oneself physically and mentally while embracing the thrill of the mountains. Safety measures, including avalanche awareness and carrying appropriate gear, are paramount in ski touring due to the inherent risks of backcountry environments.</p>
+            <p>Explore the heart of Tunisian culture with hands-on workshops held in the historic Medina of Tunis.
+               we will learn directly from skilled artisans who are masters of their crafts. The workshops cover a variety of traditional techniques,
+               including pottery making, textile weaving, and intricate mosaic creation.
+               This activity is perfect for cultural enthusiasts and anyone looking to connect 
+               with the rich heritage of Tunisia in a tangible way.
+              </p>
 
             <div className="tour-location">
               <h4>Activity Location on Map</h4>
-              <div className="map-area mb-30">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193325.0481540361!2d-74.06757856146028!3d40.79052383652264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1660366711448!5m2!1sen!2sbd" width={600} height={450} style={{border: 0}} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+              <div className="map-area mb-30" id="map" style={{ width: '800px', height: '450px' }}>
               </div>
             </div>
       </div>

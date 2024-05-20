@@ -49,13 +49,13 @@ const page = () => {
             <div className="recent-listing-area">
               <div className="title-and-tab">
                 <div className="page-title">
-                  <h4>Your History:</h4>
+                  <h4>Your Itineraries:</h4>
                    <div className="booking-options">
                       <ul className="nav nav-pills" id="pills-tab2" role="tablist">
                         <li className="nav-item" role="presentation">
                           <button className="nav-link active" id="tour-tab" data-bs-toggle="pill" data-bs-target="#tour" type="button" role="tab" aria-controls="tour" aria-selected="true">
                            <Icon name="itinerary" width={23} height={23} viewBox="0 0 23 23"></Icon>
-                             Itinerary
+                             
                           </button>
                         </li>
                      </ul>
@@ -77,7 +77,6 @@ const page = () => {
                       <thead>
                         <tr>
                           <th>Itinerary name</th>
-                          <th>Type</th>
                           <th>Participants</th>
                           <th>Status</th>
                           <th>Timeline</th>
@@ -86,91 +85,66 @@ const page = () => {
                       <tbody>
                         <tr>
                           <td data-label="Tour Package">
-                            <div className="product-name">
-                              <div className="img">
-                                <img src="/assets/img/home1/package-card-img1.png" alt="" />
-                              </div>
+                            <div className="product-name"> 
                               <div className="product-content">
-                                <h6><Link href="/package/package-details">Explore Travel NYC's Museums, Diversity,</Link></h6>
-                                <p> <span>Nepal + Indea</span></p>
+                                <h6><Link href="/package/package-details">Balkan adventure and culinary tour</Link></h6>
                               </div>
                             </div>
-                          </td>
-                          <td data-label="Type">
-                            Group
-                          </td>
-                          <td data-label="Tourist">
-                            3 person
-                          </td>
-                          <td data-label="Status">
-                            <span className="confirmed">Confirmed</span>
-                          </td>
-                          <td data-label="Timeline">
-                            July 10, 2023 - July 14, 2023
-                          </td>
-                        </tr>
-                        <tr>
-                          <td data-label="Tour Package">
-                            <div className="product-name">
-                              <div className="img">
-                                <img src="/assets/img/home1/package-card-img2.png" alt="" />
-                              </div>
-                              <div className="product-content">
-                                <h6><Link href="/package/package-details">Embark Tranquility, Adventure, And Spiritual.</Link></h6>
-                                <p> <span>Italy</span></p>
-                              </div>
-                            </div>
-                          </td>
-                          <td data-label="Type">
-                            Couple 
                           </td>
                           <td data-label="Tourist">
                             2 person
                           </td>
                           <td data-label="Status">
-                            <span className="pending">Processing</span>
+                            <span className="pending">planning</span>
                           </td>
                           <td data-label="Timeline">
-                            July 14, 2023 - July 17, 2023
-                          </td>
-                        </tr>
-                        <tr>
-                          <td data-label="Tour Package">
-                            <div className="product-name">
-                              <div className="img">
-                                <img src="/assets/img/home1/package-card-img3.png" alt="" />
-                              </div>
-                              <div className="product-content">
-                                <h6><Link href="/package/package-details">A Journey Of Tour Beauty And Inspiration.</Link></h6>
-                                <p> <span>EGYPT + Turkey</span></p>
-                              </div>
-                            </div>
-                          </td>
-                          <td data-label="Type">
-                            Honeymoon 
-                          </td>
-                          <td data-label="Tourist">
-                            14 person
-                          </td>
-                          <td data-label="Status">
-                            <span className="rejected">Cancelled</span>
-                          </td>
-                          <td data-label="Timeline">
-                            July 10, 2023 - July 14, 2023
+                            24 May - June 2, 2024
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                    <div className="pagination-area">
+                  </div> 
+                  <h4 class="table-title">Requests sent:</h4> 
+                  <div className="recent-listing-table">
+                    <table className="eg-table2">
+                      <thead>
+                      <tr>
+                         <th>Itinerary concerned</th>
+                         <th>Time stamp</th>
+                         <th>Status</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td data-label="Request ID">Cultural Riches of North Africa (Maghreb)</td>
+                          <td data-label="Date Received">May 20, 2024</td>
+                          <td data-label="Status">
+                          <span className="pending">pending</span>
+                           </td>
+                         </tr>
+                    </tbody>
+                    </table>
+                  </div>
+                  <h4 class="table-title">Requests received:</h4> 
+                  <div className="recent-listing-table">
+                    <table className="eg-table2">
+                      <thead>
+                      <tr>
+                         <th>Itinerary concerned</th>
+                         <th>Time stamp</th>
+                         <th>Status</th>
+                         <th>Actions</th>
+                      </tr>
+                      </thead>
+                      
+                      <tbody>
+                    </tbody>
+                    </table>
+                  </div>
+                  <div className="pagination-area">
                       <ul className="paginations">
                         <li className="page-item active">
                           <a href="#">1</a>
-                        </li>
-                        <li className="page-item">
-                          <a href="#">2</a>
-                        </li>
-                        <li className="page-item">
-                          <a href="#">3</a>
                         </li>
                       </ul>
                       <ul className="paginations-buttons">
@@ -181,8 +155,7 @@ const page = () => {
                          <a href="#">Next</a>
                         </li>
                       </ul>
-                    </div>
-                  </div>     
+                    </div>   
                 </div>
               </div>
             </div>
@@ -195,9 +168,6 @@ const page = () => {
     <ul className="footer-menu-list">
       <li>
         <a href="#">About Us</a>
-      </li>
-      <li>
-        <a href="#">Terms &amp; Conditions</a>
       </li>
     </ul>
   </div>

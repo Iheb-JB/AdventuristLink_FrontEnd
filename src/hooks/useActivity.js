@@ -19,7 +19,6 @@ const useActivity = ()=>{
             toast.error("Failed to create activity: " + error.message);
             throw error;
         }
-        
     }
     return {createActivity};
 }
