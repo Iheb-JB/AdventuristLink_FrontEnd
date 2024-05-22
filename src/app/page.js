@@ -14,11 +14,8 @@ export default function Home() {
     <>
       <Header2 />
       <Home2Banner />
-      <Home2ThrillingTour />
       <Home2WhyChoose />
       <Home2Activities />
-      <Home2Testimonial />
-      <Newslatter />
       <Footer />
       <Toaster/>
     </>

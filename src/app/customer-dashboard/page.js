@@ -56,7 +56,7 @@ const page = () => {
       ));
       await createItinerary({
          ...formData,
-         destinations: destinationIds.map(dest => dest._id),
+         destinations: destinationIds.map(dest => dest?._id).filter(id => id !== undefined),
          activities: selectedActivities,
          participants: []
       });

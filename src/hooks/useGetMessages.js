@@ -14,17 +14,16 @@ const useGetMessages = ()=>{
             if (!selectedConversation?._id) return;
             setLoading(true);
             try {
-                
                 const response = await api.get(`/messages/${selectedConversation._id}`);
-                
-                setMessages([...messages,response.data]);
+                setMessages(...messages,response.data);
+                if(response.data.error){throw new Error(response.data.error)}
             } catch (error) {
                 toast.error(error.response?.data.message || "Failed to get message.");
             }finally{
                 setLoading(false);
             }
         };
-        getMessages();
+        if(selectedConversation?._id){getMessages();}
     },[selectedConversation?._id, setMessages]);
    
 

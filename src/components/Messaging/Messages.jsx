@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
+import useListenMessages from "@/hooks/useListenMessages";
 
 const { default: useGetMessages } = require("@/hooks/useGetMessages");
 
@@ -9,7 +10,7 @@ const { default: useGetMessages } = require("@/hooks/useGetMessages");
 
 const Messages = ()=>{
  const {loading,messages}= useGetMessages();
-  console.log("messages:", messages);
+  useListenMessages();
   const lastMessageRef = useRef();
 
   useEffect(()=>{
@@ -20,17 +21,14 @@ const Messages = ()=>{
 
 
   return (
-    <div className='px-4 flex-1 overflow-auto'>
-    {!loading && messages.length > 0 ? (
-      messages.map((message)=>(
-        <div key={message._id}
-              ref={lastMessageRef}>
-            <Message message={message}/>    
-        </div>
-      ))
-    ):(
-      loading ? <MessageSkeleton /> : <p className='text-center'>No messages found.</p>
-    )}
+    <div key={Math.random()} className='px-4 flex-1 overflow-auto'>
+    {!loading && messages.length > 0 &&
+      messages.map((n)=> (
+      <div key={n._id} ref={lastMessageRef}>
+      <Message message={n} />
+      </div>
+      ))}
+    
     {loading && [...Array(3)].map((idx)=> <MessageSkeleton key={idx}/>)}
     {!loading && messages.length === 0 &&(
       <p className='text-center'>Send a message to start the conversation</p>

@@ -40,8 +40,11 @@ const AuthProvider = ({ children }) => {
   useEffect(()=>{
      // Access localStorage only when component is mounted on the client
      const user = localStorage.getItem('adventur-user');
-     if (user) {
-         setAuthUser(JSON.parse(user));
+     if (user) 
+      {
+        const userData = JSON.parse(user);
+        console.log("Loaded user data from storage:", userData);
+         setAuthUser(userData);
      }
   },[]);
  

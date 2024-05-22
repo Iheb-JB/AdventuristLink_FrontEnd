@@ -275,6 +275,15 @@ const Header2 = () => {
             </li>
           </ul>
          {/* login button */ }
+         <button
+            className="signin-register primary-btn3 d-xl-flex d-none"
+            data-bs-toggle="modal"
+            data-bs-target="#user-login"
+            onClick={toggleLoginModal}
+          >
+            SignIn
+          </button>
+
           {/* If user logged in, message-notification should be displayed. current display:none/ here message notification place */ }
           <div className="message-notification">
             <a className="icon message-icon" href="/Messenger">

@@ -29128,6 +29128,25 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 }
 .bi-star-fill {
   color: gold;
+}.btn-accept {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.btn-reject {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.btn-accept:hover, .btn-reject:hover {
+  opacity: 0.8;
 }
 
 

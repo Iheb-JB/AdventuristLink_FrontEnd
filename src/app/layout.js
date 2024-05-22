@@ -26,9 +26,9 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body>
           <AuthProvider>
-            
+            <SocketContextProvider>
             {children}
-            
+            </SocketContextProvider>
           </AuthProvider>
         </body>
       </html>

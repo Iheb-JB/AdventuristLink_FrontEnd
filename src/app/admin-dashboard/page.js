@@ -90,7 +90,7 @@ const Page = () => {
                       <div className="counter-content">
                         <p>All itineraries</p>
                         <div className="number">
-                          <h3 className="counter">130</h3>
+                          <h3 className="counter">12</h3>
                           <span>+</span>
                         </div>
                       </div>
@@ -104,7 +104,7 @@ const Page = () => {
                       <div className="counter-content">
                         <p>Total Activities</p>
                         <div className="number">
-                          <h3 className="counter">70</h3>
+                          <h3 className="counter">7</h3>
                           <span>+</span>
                         </div>
                       </div>
@@ -122,22 +122,17 @@ const Page = () => {
                         <th>Type</th>
                         <th>Status</th>
                         <th>Timeline</th>
+                        <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td data-label="Name">
                           <div className="product-name">
-                            <div className="img">
-                              <img
-                                src="/assets/img/home1/package-card-img1.png"
-                                alt=""
-                              />
-                            </div>
                             <div className="product-content">
                               <h6>
                                 <a href="#">
-                                  Iheb Jabeur
+                                  Iheb_Jabeur
                                 </a>
                               </h6>
                             </div>
@@ -148,22 +143,42 @@ const Page = () => {
                           <span className="confirmed">Confirmed</span>
                         </td>
                         <td data-label="Timeline">
-                           July 14, 2023
+                           20 May, 2024
+                        </td>
+                        <td data-label="Actions">
+                            <button className="btn-accept">Accept</button>
+                             <button className="btn-reject">Reject</button>
                         </td>
                       </tr>
                       <tr>
                         <td data-label="Name">
                           <div className="product-name">
-                            <div className="img">
-                              <img
-                                src="/assets/img/home1/package-card-img1.png"
-                                alt=""
-                              />
-                            </div>
                             <div className="product-content">
                              <h6>
                                 <a href="#">
-                                  Jhon Doe
+                                  jacob_salvadore
+                                </a>
+                              </h6>
+                            </div>
+                          </div>
+                        </td>
+                        <td data-label="Category">new registration</td>
+                        <td data-label="Status">
+                          <span className="confirmed">confirmed</span>
+                        </td>
+                        <td data-label="Timeline">May 20, 2024</td>
+                        <td data-label="Actions">
+                          <button className="btn-accept">Accept</button>
+                          <button className="btn-reject">Reject</button>
+                        </td>
+                      </tr>
+                       <tr>
+                        <td data-label="Name">
+                          <div className="product-name">
+                            <div className="product-content">
+                             <h6>
+                                <a href="#">
+                                  oussema_testy
                                 </a>
                               </h6>
                             </div>
@@ -173,21 +188,19 @@ const Page = () => {
                         <td data-label="Status">
                           <span className="pending">Pending</span>
                         </td>
-                        <td data-label="Timeline">May 10, 2024</td>
+                        <td data-label="Timeline">May 13, 2024</td>
+                        <td data-label="Actions">
+                          <button className="btn-accept">Accept</button>
+                          <button className="btn-reject">Reject</button>
+                        </td>
                       </tr>
                       <tr>
                         <td data-label="Name">
                           <div className="product-name">
-                            <div className="img">
-                              <img
-                                src="/assets/img/home1/package-card-img1.png"
-                                alt=""
-                              />
-                            </div>
                             <div className="product-content">
                               <h6>
                                 <a href="#">
-                                  Bou Kalthoum.
+                                  kalil_admin
                                 </a>
                               </h6>
                             </div>
@@ -197,7 +210,11 @@ const Page = () => {
                         <td data-label="Status">
                           <span className="rejected">Rejected</span>
                         </td>
-                        <td data-label="Timeline">May 08, 2024</td>
+                        <td data-label="Timeline"> 14 May, 2024</td>
+                        <td data-label="Actions">
+                          <button className="btn-accept">Accept</button>
+                          <button className="btn-reject">Reject</button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -208,9 +225,6 @@ const Page = () => {
                       </li>
                       <li className="page-item">
                         <a href="#">2</a>
-                      </li>
-                      <li className="page-item">
-                        <a href="#">3</a>
                       </li>
                     </ul>
                     <ul className="paginations-buttons">
@@ -231,9 +245,6 @@ const Page = () => {
           <ul className="footer-menu-list">
             <li>
               <a href="#">About Us</a>
-            </li>
-            <li>
-              <a href="#">Terms &amp; Conditions</a>
             </li>
           </ul>
         </div>

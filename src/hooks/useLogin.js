@@ -19,10 +19,10 @@ const useLogin = ()=>{
              body: JSON.stringify({email,password})
             });
             const data = await response.json();
-            //console.log(data);
+            console.log(data);
             if(!response.ok){throw new Error(data.error || "Login failed");}
-            localStorage.setItem('adventur-user', JSON.stringify({ token: data.token }));
-            setAuthUser({token: data.token});
+            localStorage.setItem('adventur-user', JSON.stringify(data));
+            setAuthUser(data);
            // Directly redirect to the profile completion page if profile is not complete
            if (!data.profile) {
             window.location.href = '/customer-dashboard/customer-profile';  // Redirects directly
