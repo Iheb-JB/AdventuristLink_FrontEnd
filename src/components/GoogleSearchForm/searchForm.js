@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLoadScript, Autocomplete } from "@react-google-maps/api";
 
 const scriptOptions = {
-  googleMapsApiKey: "AIzaSyCMTO6uC2oPpuii98yZi68pKaoIpq2YT_k",
+  googleMapsApiKey: process.env.GOOGLE_MAPS_API,
   libraries: ["places"],
 };
 
